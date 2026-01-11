@@ -1,0 +1,8 @@
+﻿<maui:MauiWinUIApplication
+    x:Class="Gym_Logs.WinUI.App"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:maui="using:Microsoft.Maui"
+    xmlns:local="using:Gym_Logs.WinUI">
+
+</maui:MauiWinUIApplication>

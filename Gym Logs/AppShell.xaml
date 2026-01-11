@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+     x:Class="Gym_Logs.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:views="clr-namespace:Gym_Logs.View"
+    Title="Gym_Logs">
+
+    <ShellContent
+        Title="Registration"
+        ContentTemplate="{DataTemplate views:RegistrationView}"
+        Route="RegistrationView" />
+
+    <ShellContent
+        Title="WorkoutCalendar"
+         ContentTemplate="{DataTemplate views:WorkoutCalendarView}"
+        Route="WorkoutCalendarPage" />
+
+    <ShellContent
+    Title="WorkoutCalendar"
+     ContentTemplate="{DataTemplate views:PersonalView}"
+    Route="WorkoutCalendarPage" />
+
+    <ShellContent
+    Title="WorkoutCalendar"
+     ContentTemplate="{DataTemplate views:StatisticView}"
+    Route="WorkoutCalendarPage" />
+
+    <ShellContent
+    Title="WorkoutCalendar"
+     ContentTemplate="{DataTemplate views:SettingsView}"
+    Route="WorkoutCalendarPage" />
+
+</Shell>
