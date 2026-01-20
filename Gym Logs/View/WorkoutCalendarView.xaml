@@ -1,36 +1,80 @@
 <?xml version="1.0" encoding="utf-8" ?>
-<ContentPage  xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:Gym_Logs.ViewModels"
+             xmlns:vm="clr-namespace:Gym_Logs.ViewModel"
              x:Class="Gym_Logs.View.WorkoutCalendarView"
-             x:Name="WorkoutCalendarPage">
-    
-    <StackLayout Padding="10" Spacing="10">
+             x:Name="WorkoutCalendarPage"
+             BackgroundColor="White">
 
-        <!-- Monatsname -->
-        <Frame BackgroundColor="#2196F3" CornerRadius="8" Padding="10">
-            <Label Text="{Binding CurrentMonthName}"
+    <VerticalStackLayout Padding="10" Spacing="10">
+
+        <Grid ColumnDefinitions="Auto,*,Auto" HeightRequest="60" VerticalOptions="Center">
+            <Border Grid.ColumnSpan="3"
+                    BackgroundColor="Red"
+                    Stroke="Black"
+                    StrokeShape="RoundRectangle 12"
+                    Padding="0"
+                    HorizontalOptions="Fill"
+                    VerticalOptions="Fill">
+                <Border.Background>
+                    <RadialGradientBrush Center="0,0" Radius="1">
+                        <GradientStop Color="#FFCDD2" Offset="0.0" />
+                        <GradientStop Color="#B71C1C" Offset="1.0" />
+                    </RadialGradientBrush>
+                </Border.Background>
+            </Border>
+            <Button Text="‹"
+                    FontAttributes="Bold"
+                    Command="{Binding PreviousMonthCommand}"
+                    BackgroundColor="Transparent"
+                    FontSize="36"
+                    TextColor="White"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    HorizontalOptions="Start"
+                    VerticalOptions="Center"/>
+            <Label Grid.Column="1"
+                   Text="{Binding CurrentMonthName}"
+                   FontAttributes="Bold"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
-                   FontAttributes="Bold"
-                   TextColor="White"
-                   FontSize="22"/>
-        </Frame>
-
-        <!-- Kalender-Grid -->
-        <Grid x:Name="CalendarGrid"
-              RowSpacing="5"
-              ColumnSpacing="5">
-
-            <!-- Wochentage -->
-            <Label Text="Mo" Grid.Row="0" Grid.Column="0" HorizontalOptions="Center"/>
-            <Label Text="Di" Grid.Row="0" Grid.Column="1" HorizontalOptions="Center"/>
-            <Label Text="Mi" Grid.Row="0" Grid.Column="2" HorizontalOptions="Center"/>
-            <Label Text="Do" Grid.Row="0" Grid.Column="3" HorizontalOptions="Center"/>
-            <Label Text="Fr" Grid.Row="0" Grid.Column="4" HorizontalOptions="Center"/>
-            <Label Text="Sa" Grid.Row="0" Grid.Column="5" HorizontalOptions="Center"/>
-            <Label Text="So" Grid.Row="0" Grid.Column="6" HorizontalOptions="Center"/>
+                   FontSize="22"
+                   TextColor="White"/>
+            <Button Grid.Column="2"
+                    Text="›"
+                    FontAttributes="Bold"
+                    Command="{Binding NextMonthCommand}"
+                    BackgroundColor="Transparent"
+                    FontSize="36"
+                    TextColor="White"
+                    WidthRequest="50"
+                    HeightRequest="50"
+                    HorizontalOptions="End"
+                    VerticalOptions="Center"/>
         </Grid>
 
-    </StackLayout>
+        <CollectionView ItemsSource="{Binding Days}" SelectionMode="None">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="7" HorizontalItemSpacing="5" VerticalItemSpacing="5"/>
+            </CollectionView.ItemsLayout>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Button Text="{Binding DayText}"
+                            TextColor="Black"
+                            FontAttributes="Bold"
+                            IsEnabled="{Binding IsEnabled}"
+                            Background="{Binding BackgroundBrush}"
+                            BorderColor="Black"
+                            BorderWidth="1"
+                            CornerRadius="6"
+                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:WorkoutCalendarViewModel}},
+                                      Path=SelectDayCommand}"
+                            CommandParameter="{Binding}"
+                            Margin="1"/>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
 </ContentPage>
