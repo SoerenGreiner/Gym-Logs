@@ -1,12 +1,12 @@
 ﻿using SQLite;
-using Gym_Logs.Model;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Gym_Logs.Model.Database;
 
-namespace Gym_Logs.Services
+namespace Gym_Logs.Services.Database
 {
     public class BodyStatusDayDatabase : BaseDatabase<BodyStatusDay>
     {

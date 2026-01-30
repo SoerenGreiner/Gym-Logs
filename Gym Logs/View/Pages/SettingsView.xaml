@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Gym_Logs.ViewModel"
+             x:Class="Gym_Logs.View.SettingsView"
+             BackgroundColor="{DynamicResource AppBackgroundColor}">
+
+    <ContentPage.BindingContext>
+        <vm:SettingsViewModel/>
+    </ContentPage.BindingContext>
+
+    <VerticalStackLayout Padding="20" Spacing="20">
+
+        <Label Text="Wähle ein Theme:" 
+               FontSize="18" 
+               FontAttributes="Bold"/>
+
+        <Picker
+    Title="Theme auswählen"
+    ItemsSource="{Binding AvailableThemes}"
+    SelectedItem="{Binding SelectedTheme, Mode=TwoWay}"
+    ItemDisplayBinding="{Binding DisplayName}" />
+
+        <Button Text="Theme anwenden"
+                Command="{Binding ApplySelectedThemeCommand}"/>
+    </VerticalStackLayout>
+</ContentPage>

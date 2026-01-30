@@ -2,27 +2,33 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Gym_Logs.ViewModel"
+             xmlns:controls="clr-namespace:Gym_Logs.View.Controls"
              x:Class="Gym_Logs.View.WorkoutCalendarView"
-             x:Name="WorkoutCalendarPage"
-             BackgroundColor="White">
+             BackgroundColor="{DynamicResource Deep}">
+
+    <!-- MVVM BindingContext -->
+    <ContentPage.BindingContext>
+        <vm:WorkoutCalendarViewModel />
+    </ContentPage.BindingContext>
 
     <VerticalStackLayout Padding="10" Spacing="10">
 
+        <!-- Monat Navigation mit Gradient -->
         <Grid ColumnDefinitions="Auto,*,Auto" HeightRequest="60" VerticalOptions="Center">
             <Border Grid.ColumnSpan="3"
-                    BackgroundColor="Red"
-                    Stroke="Black"
+                    Stroke="{DynamicResource Glow}"
                     StrokeShape="RoundRectangle 12"
                     Padding="0"
                     HorizontalOptions="Fill"
                     VerticalOptions="Fill">
                 <Border.Background>
                     <RadialGradientBrush Center="0,0" Radius="1">
-                        <GradientStop Color="#FFCDD2" Offset="0.0" />
-                        <GradientStop Color="#B71C1C" Offset="1.0" />
+                        <GradientStop Color="{DynamicResource SurfaceSoft}" Offset="0.0" />
+                        <GradientStop Color="{DynamicResource Surface}" Offset="1.0" />
                     </RadialGradientBrush>
                 </Border.Background>
             </Border>
+
             <Button Text="‹"
                     FontAttributes="Bold"
                     Command="{Binding PreviousMonthCommand}"
@@ -33,13 +39,15 @@
                     HeightRequest="50"
                     HorizontalOptions="Start"
                     VerticalOptions="Center"/>
+
             <Label Grid.Column="1"
                    Text="{Binding CurrentMonthName}"
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
                    FontSize="22"
-                   TextColor="White"/>
+                   TextColor="{DynamicResource PrimaryTextColor}"/>
+
             <Button Grid.Column="2"
                     Text="›"
                     FontAttributes="Bold"
@@ -53,25 +61,23 @@
                     VerticalOptions="Center"/>
         </Grid>
 
-        <CollectionView ItemsSource="{Binding Days}" SelectionMode="None">
+        <!-- Kalender Grid -->
+        <CollectionView ItemsSource="{Binding Days}"
+                        SelectionMode="None">
+
             <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" Span="7" HorizontalItemSpacing="5" VerticalItemSpacing="5"/>
+                <!-- 7 Tage pro Reihe -->
+                <GridItemsLayout Orientation="Vertical" Span="7"
+                                 HorizontalItemSpacing="6" VerticalItemSpacing="6"/>
             </CollectionView.ItemsLayout>
 
             <CollectionView.ItemTemplate>
                 <DataTemplate>
-                    <Button Text="{Binding DayText}"
-                            TextColor="Black"
-                            FontAttributes="Bold"
-                            IsEnabled="{Binding IsEnabled}"
-                            Background="{Binding BackgroundBrush}"
-                            BorderColor="Black"
-                            BorderWidth="1"
-                            CornerRadius="6"
-                            Command="{Binding Source={RelativeSource AncestorType={x:Type vm:WorkoutCalendarViewModel}},
-                                      Path=SelectDayCommand}"
-                            CommandParameter="{Binding}"
-                            Margin="1"/>
+                    <controls:CalendarDayView
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Fill">
+                        <!-- TapGestureRecognizer im CalendarDayView XAML selbst -->
+                    </controls:CalendarDayView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>
         </CollectionView>

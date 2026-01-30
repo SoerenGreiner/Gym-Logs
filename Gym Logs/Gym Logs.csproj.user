@@ -27,8 +27,5 @@
     <None Update="Resources\Styles\Styles.xaml">
       <SubType>Designer</SubType>
     </None>
-    <None Update="View\RegistrationView.xaml">
-      <SubType>Designer</SubType>
-    </None>
   </ItemGroup>
 </Project>

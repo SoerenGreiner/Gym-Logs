@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLite;
 
-namespace Gym_Logs.Services
+namespace Gym_Logs.Services.Database
 {
     public class BaseDatabase<T> where T : new()
     {

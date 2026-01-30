@@ -1,8 +1,8 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Gym_Logs.Model;
+using Gym_Logs.Model.Database;
 using Gym_Logs.View;
-using Gym_Logs.Services;
+using Gym_Logs.Services.Database;
 
 namespace Gym_Logs.ViewModels
 {

@@ -1,4 +1,4 @@
-﻿using Gym_Logs.Services;
+﻿using Gym_Logs.Services.Database;
 using Gym_Logs.View;
 using Gym_Logs.ViewModel;
 using Gym_Logs.ViewModels;

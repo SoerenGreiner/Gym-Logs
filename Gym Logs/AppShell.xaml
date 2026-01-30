@@ -1,34 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <Shell
-     x:Class="Gym_Logs.AppShell"
+    x:Class="Gym_Logs.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
     xmlns:views="clr-namespace:Gym_Logs.View"
-    Title="Gym_Logs">
+    Title="Gym Logs"
+    FlyoutBackgroundColor="{DynamicResource SurfaceColor}"
+    BackgroundColor="{DynamicResource AppBackgroundColor}"
+    ForegroundColor="{DynamicResource PrimaryTextColor}">
 
-    <ShellContent
-        Title="Registration"
-        ContentTemplate="{DataTemplate views:RegistrationView}"
-        Route="RegistrationView" />
+    <Shell.FlyoutHeader>
+        <Grid BackgroundColor="{DynamicResource AccentColor}" HeightRequest="80" Padding="10">
+            <Label Text="Gym Logs"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="{DynamicResource PrimaryTextColor}"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"/>
+        </Grid>
+    </Shell.FlyoutHeader>
 
-    <ShellContent
-        Title="WorkoutCalendar"
-         ContentTemplate="{DataTemplate views:WorkoutCalendarView}"
-        Route="WorkoutCalendarPage" />
+    <FlyoutItem Title="Registration" Icon="registration.png">
+        <ShellContent ContentTemplate="{DataTemplate views:RegistrationView}" Route="RegistrationView" />
+    </FlyoutItem>
 
-    <ShellContent
-    Title="WorkoutCalendar"
-     ContentTemplate="{DataTemplate views:PersonalView}"
-    Route="WorkoutCalendarPage" />
+    <FlyoutItem Title="Calendar" Icon="calendar.png">
+        <ShellContent ContentTemplate="{DataTemplate views:WorkoutCalendarView}" Route="Calendar" />
+    </FlyoutItem>
 
-    <ShellContent
-    Title="WorkoutCalendar"
-     ContentTemplate="{DataTemplate views:StatisticView}"
-    Route="WorkoutCalendarPage" />
+    <FlyoutItem Title="Personal" Icon="personal.png">
+        <ShellContent ContentTemplate="{DataTemplate views:PersonalView}" Route="personal" />
+    </FlyoutItem>
 
-    <ShellContent
-    Title="WorkoutCalendar"
-     ContentTemplate="{DataTemplate views:SettingsView}"
-    Route="WorkoutCalendarPage" />
+    <FlyoutItem Title="Statistics" Icon="stats.png">
+        <ShellContent ContentTemplate="{DataTemplate views:StatisticView}" Route="statistics" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Settings" Icon="settings.png">
+        <ShellContent ContentTemplate="{DataTemplate views:SettingsView}" Route="settings" />
+    </FlyoutItem>
 
 </Shell>

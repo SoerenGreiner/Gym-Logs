@@ -1,9 +1,9 @@
 ﻿using SQLite;
-using Gym_Logs.Model;
 using System.Linq;
 using System.Threading.Tasks;
+using Gym_Logs.Model.Database;
 
-namespace Gym_Logs.Services
+namespace Gym_Logs.Services.Database
 {
     public class UserDatabase : BaseDatabase<User>
     {

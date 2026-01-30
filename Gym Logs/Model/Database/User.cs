@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SQLite;
 
-namespace Gym_Logs.Model
+namespace Gym_Logs.Model.Database
 {
     public class User
     {

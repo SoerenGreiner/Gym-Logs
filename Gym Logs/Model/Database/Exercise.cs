@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gym_Logs.Model
+namespace Gym_Logs.Model.Database
 {
     public class Exercise
     {

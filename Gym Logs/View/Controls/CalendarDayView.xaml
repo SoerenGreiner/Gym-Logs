@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Gym_Logs.ViewModel"
+             x:Class="Gym_Logs.View.Controls.CalendarDayView"
+             MinimumHeightRequest="50"
+             HorizontalOptions="Fill"
+             VerticalOptions="Fill">
+
+    <Border Padding="0"
+            Margin="2"
+            HorizontalOptions="Fill"
+            VerticalOptions="Fill"
+            Stroke="{DynamicResource AccentColor}"
+            StrokeThickness="1">
+
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="6"/>
+        </Border.StrokeShape>
+
+        <Border.Background>
+            <Binding Path="BackgroundBrush"/>
+        </Border.Background>
+
+        <Label Text="{Binding DayText}"
+               FontAttributes="Bold"
+               HorizontalOptions="Fill"
+               VerticalOptions="Fill"
+               HorizontalTextAlignment="Center"
+               VerticalTextAlignment="Center"
+               TextColor="{DynamicResource PrimaryTextColor}">
+            <Label.GestureRecognizers>
+                <TapGestureRecognizer
+                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:WorkoutCalendarViewModel}}, Path=SelectDayCommand}"
+                    CommandParameter="{Binding}" />
+            </Label.GestureRecognizers>
+        </Label>
+    </Border>
+</ContentView>
