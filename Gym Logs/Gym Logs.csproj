@@ -85,6 +85,9 @@
 	  <MauiXaml Update="View\Controls\CalendarDayView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="View\Controls\FlyoutItemView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="View\Pages\PersonalView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
@@ -107,6 +110,12 @@
 
 	<ItemGroup>
 	  <Folder Include="Resources\Styles\FeatureThemes\" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Compile Update="View\Pages\AppShellView.xaml.cs">
+	    <DependentUpon>AppShellView.xaml</DependentUpon>
+	  </Compile>
 	</ItemGroup>
 
 </Project>

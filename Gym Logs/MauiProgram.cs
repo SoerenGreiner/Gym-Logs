@@ -31,7 +31,8 @@ namespace Gym_Logs
             builder.Services.AddSingleton<WorkoutEntryDatabase>();
             builder.Services.AddSingleton<BodyStatusDayDatabase>();
 
-            builder.Services.AddSingleton<AppShell>();
+            builder.Services.AddSingleton<AppShellView>();
+            builder.Services.AddSingleton<AppShellViewModel>();
             builder.Services.AddTransient<RegistrationView>();
             builder.Services.AddTransient<RegistrationViewModel>();
             builder.Services.AddTransient<WorkoutCalendarView>();
