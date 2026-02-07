@@ -5,63 +5,61 @@
     x:Class="Gym_Logs.Resources.Styles.AppThemes.Light">
 
     <!-- ========= BASE LAYERS ========= -->
-    <Color x:Key="Deep">#FFFFFF</Color>
-    <Color x:Key="Surface">#F2F2F2</Color>
-    <Color x:Key="SurfaceSoft">#FFFFFF</Color>
-    <Color x:Key="Glow">#FFD54F</Color>
-    <Color x:Key="Accent">#FF9800</Color>
+    <Color x:Key="Background">#F9FAFB</Color>
+
+    <Color x:Key="PrimaryLight">#FFF5EE</Color>
+    <Color x:Key="PrimaryDark">#F5F5F5</Color>
+
+    <Color x:Key="SecondaryLight">#FFF5EE</Color>
+    <Color x:Key="SecondaryDark">#EEE5DE</Color>
+
+    <Color x:Key="Accent">#475467</Color>
 
     <!-- ========= TEXT ========= -->
-    <Color x:Key="PrimaryTextColor">#000000</Color>
-    <Color x:Key="SecondaryTextColor">#666666</Color>
-
-    <!-- ========= STATES ========= -->
-    <Color x:Key="CalendarToday">#FFD54F</Color>
-    <Color x:Key="CalendarWorkout">#81C784</Color>
-    <Color x:Key="CalendarBody">#4DB6AC</Color>
+    <Color x:Key="PrimaryTextColor">#101828</Color>
+    <Color x:Key="SecondaryTextColor">#667085</Color>
 
     <!-- ========= RADIAL GRADIENTS ========= -->
-
-    <!-- Normal -->
     <RadialGradientBrush x:Key="CalendarNormalBrush"
-                         Center="0,0" Radius="1">
-        <GradientStop Color="{DynamicResource SurfaceSoft}" Offset="0"/>
-        <GradientStop Color="{DynamicResource Surface}" Offset="1"/>
+                     Center="0,0" Radius="1">
+        <GradientStop Color="#F2F2F2" Offset="0"/>
+        <GradientStop Color="#BFBFBF" Offset="1"/>
     </RadialGradientBrush>
+    <Color x:Key="CalendarNormalTextColor">#101828</Color>
 
-    <!-- Header -->
     <RadialGradientBrush x:Key="CalendarHeaderBrush"
-                         Center="0,0" Radius="1">
-        <GradientStop Color="{DynamicResource SurfaceSoft}" Offset="0"/>
-        <GradientStop Color="{DynamicResource Glow}" Offset="1"/>
+                     Center="0,0" Radius="1">
+        <GradientStop Color="{DynamicResource SecondaryLight}" Offset="0"/>
+        <GradientStop Color="{DynamicResource SecondaryDark}" Offset="1"/>
     </RadialGradientBrush>
+    <Color x:Key="CalendarHeaderTextColor">#101828</Color>
 
-    <!-- Today -->
     <RadialGradientBrush x:Key="CalendarTodayBrush"
-                         Center="0,0" Radius="1">
-        <GradientStop Color="{DynamicResource CalendarToday}" Offset="0"/>
-        <GradientStop Color="{DynamicResource Glow}" Offset="1"/>
+                     Center="0,0" Radius="1">
+        <GradientStop Color="#F0E68C" Offset="0"/>
+        <GradientStop Color="#C9B458" Offset="1"/>
     </RadialGradientBrush>
+    <Color x:Key="CalendarTodayTextColor">#000000</Color>
 
-    <!-- Workout -->
     <RadialGradientBrush x:Key="CalendarWorkoutBrush"
-                         Center="0,0" Radius="1">
-        <GradientStop Color="{DynamicResource CalendarWorkout}" Offset="0"/>
-        <GradientStop Color="{DynamicResource Accent}" Offset="1"/>
+                     Center="0,0" Radius="1">
+        <GradientStop Color="#8FB3E8" Offset="0"/>
+        <GradientStop Color="#4A76B8" Offset="1"/>
     </RadialGradientBrush>
+    <Color x:Key="CalendarWorkoutTextColor">#FFFFFF</Color>
 
-    <!-- Body -->
     <RadialGradientBrush x:Key="CalendarBodyBrush"
-                         Center="0,0" Radius="1">
-        <GradientStop Color="{DynamicResource CalendarBody}" Offset="0"/>
-        <GradientStop Color="{DynamicResource Accent}" Offset="1"/>
+                     Center="0,0" Radius="1">
+        <GradientStop Color="#9FD3A1" Offset="0"/>
+        <GradientStop Color="#4F8F5A" Offset="1"/>
     </RadialGradientBrush>
+    <Color x:Key="CalendarBodyTextColor">#101828</Color>
 
-    <!-- Inactive -->
     <RadialGradientBrush x:Key="CalendarInactiveBrush"
-                         Center="0,0" Radius="1">
-        <GradientStop Color="#DDDDDD" Offset="0"/>
-        <GradientStop Color="#AAAAAA" Offset="1"/>
+                     Center="0,0" Radius="1">
+        <GradientStop Color="#BFBFBF" Offset="0"/>
+        <GradientStop Color="#737373" Offset="1"/>
     </RadialGradientBrush>
+    <Color x:Key="CalendarInactiveTextColor">#FFFFFF</Color>
 
 </ResourceDictionary>

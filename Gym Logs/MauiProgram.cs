@@ -1,6 +1,9 @@
 ﻿using Gym_Logs.Services.Database;
 using Gym_Logs.View;
+using Gym_Logs.View.Pages;
 using Gym_Logs.ViewModel;
+using Gym_Logs.Services.System;
+using Gym_Logs.ViewModel.Pages;
 using Gym_Logs.ViewModels;
 using Microsoft.Extensions.Logging;
 using SQLite;
@@ -41,8 +44,11 @@ namespace Gym_Logs
             builder.Services.AddTransient<PersonalViewModel>();
             builder.Services.AddTransient<SettingsView>();
             builder.Services.AddTransient<SettingsViewModel>();
+            builder.Services.AddTransient<ThemeSelectionView>();
+            builder.Services.AddTransient<ThemeSelectionViewModel>();
             builder.Services.AddTransient<StatisticView>();
             builder.Services.AddTransient<StatisticsViewModel>();
+            builder.Services.AddSingleton<ThemeService>();
 #if DEBUG
 
 #if DEBUG

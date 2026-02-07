@@ -4,7 +4,7 @@
              xmlns:vm="clr-namespace:Gym_Logs.ViewModel"
              xmlns:controls="clr-namespace:Gym_Logs.View.Controls"
              x:Class="Gym_Logs.View.WorkoutCalendarView"
-             BackgroundColor="{DynamicResource Deep}">
+             BackgroundColor="{DynamicResource Background}">
 
     <!-- MVVM BindingContext -->
     <ContentPage.BindingContext>
@@ -16,15 +16,15 @@
         <!-- Monat Navigation mit Gradient -->
         <Grid ColumnDefinitions="Auto,*,Auto" HeightRequest="60" VerticalOptions="Center">
             <Border Grid.ColumnSpan="3"
-                    Stroke="{DynamicResource Glow}"
+                    Stroke="{DynamicResource Accent}"
                     StrokeShape="RoundRectangle 12"
                     Padding="0"
                     HorizontalOptions="Fill"
                     VerticalOptions="Fill">
                 <Border.Background>
                     <RadialGradientBrush Center="0,0" Radius="1">
-                        <GradientStop Color="{DynamicResource SurfaceSoft}" Offset="0.0" />
-                        <GradientStop Color="{DynamicResource Surface}" Offset="1.0" />
+                        <GradientStop Color="{DynamicResource PrimaryLight}" Offset="0.0" />
+                        <GradientStop Color="{DynamicResource PrimaryDark}" Offset="1.0" />
                     </RadialGradientBrush>
                 </Border.Background>
             </Border>
@@ -34,7 +34,7 @@
                     Command="{Binding PreviousMonthCommand}"
                     BackgroundColor="Transparent"
                     FontSize="36"
-                    TextColor="White"
+                    TextColor="{DynamicResource PrimaryTextColor}"
                     WidthRequest="50"
                     HeightRequest="50"
                     HorizontalOptions="Start"
@@ -54,19 +54,17 @@
                     Command="{Binding NextMonthCommand}"
                     BackgroundColor="Transparent"
                     FontSize="36"
-                    TextColor="White"
+                    TextColor="{DynamicResource PrimaryTextColor}"
                     WidthRequest="50"
                     HeightRequest="50"
                     HorizontalOptions="End"
                     VerticalOptions="Center"/>
         </Grid>
 
-        <!-- Kalender Grid -->
         <CollectionView ItemsSource="{Binding Days}"
                         SelectionMode="None">
 
             <CollectionView.ItemsLayout>
-                <!-- 7 Tage pro Reihe -->
                 <GridItemsLayout Orientation="Vertical" Span="7"
                                  HorizontalItemSpacing="6" VerticalItemSpacing="6"/>
             </CollectionView.ItemsLayout>
@@ -76,7 +74,6 @@
                     <controls:CalendarDayView
                         HorizontalOptions="Fill"
                         VerticalOptions="Fill">
-                        <!-- TapGestureRecognizer im CalendarDayView XAML selbst -->
                     </controls:CalendarDayView>
                 </DataTemplate>
             </CollectionView.ItemTemplate>

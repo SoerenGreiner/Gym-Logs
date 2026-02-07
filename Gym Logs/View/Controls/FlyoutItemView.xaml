@@ -14,8 +14,8 @@
 
             <Border.Background>
                 <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="{DynamicResource SurfaceSoft}" Offset="0.0"/>
-                    <GradientStop Color="{DynamicResource Surface}" Offset="1.0"/>
+                    <GradientStop Color="{DynamicResource PrimaryLight}" Offset="0.0"/>
+                    <GradientStop Color="{DynamicResource PrimaryDark}" Offset="1.0"/>
                 </LinearGradientBrush>
             </Border.Background>
 
@@ -24,7 +24,7 @@
                  Binding="{Binding IsPressed}"
                  Value="True">
                     <Setter Property="Background"
-                Value="{DynamicResource AccentColor}" />
+                Value="{DynamicResource Accent}" />
                 </DataTrigger>
             </Border.Triggers>
 
@@ -48,7 +48,7 @@
             </Border.GestureRecognizers>
         </Border>
         <BoxView HeightRequest="1"
-                 BackgroundColor="{DynamicResource Glow}"
+                 BackgroundColor="{DynamicResource Accent}"
                  HorizontalOptions="Fill"/>
     </StackLayout>
 </ContentView>

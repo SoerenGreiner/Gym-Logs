@@ -1,4 +1,4 @@
-﻿using Gym_Logs.View;
+﻿using Gym_Logs.View.Pages;
 using Gym_Logs.ViewModel;
 using Gym_Logs.Model.System;
 
@@ -10,6 +10,7 @@ namespace Gym_Logs
         {
             InitializeComponent();
             BindingContext = viewModel;
+            Routing.RegisterRoute(nameof(ThemeSelectionView), typeof(ThemeSelectionView));
         }
 
 

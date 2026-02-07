@@ -64,7 +64,32 @@ namespace Gym_Logs.Model.System
             }
         }
 
+        public Color CalendarTextColor
+        {
+            get
+            {
+                if (Application.Current?.Resources == null)
+                    return Colors.Black;
+
+                string key = State switch
+                {
+                    CalendarDayState.Header => "CalendarHeaderTextColor",
+                    CalendarDayState.Today => "CalendarTodayTextColor",
+                    CalendarDayState.Workout => "CalendarWorkoutTextColor",
+                    CalendarDayState.Body => "CalendarBodyTextColor",
+                    CalendarDayState.Inactive => "CalendarInactiveTextColor",
+                    _ => "CalendarNormalTextColor"
+                };
+
+                if (Application.Current.Resources.TryGetValue(key, out var color))
+                    return (Color)color;
+
+                return Colors.Black;
+            }
+        }
+
         public event PropertyChangedEventHandler PropertyChanged;
+
         void OnPropertyChanged(string name) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 

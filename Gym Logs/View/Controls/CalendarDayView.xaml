@@ -11,7 +11,7 @@
             Margin="2"
             HorizontalOptions="Fill"
             VerticalOptions="Fill"
-            Stroke="{DynamicResource AccentColor}"
+            Stroke="{DynamicResource Accent}"
             StrokeThickness="1">
 
         <Border.StrokeShape>
@@ -27,13 +27,16 @@
                HorizontalOptions="Fill"
                VerticalOptions="Fill"
                HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center"
-               TextColor="{DynamicResource PrimaryTextColor}">
+               VerticalTextAlignment="Center">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer
                     Command="{Binding Source={RelativeSource AncestorType={x:Type vm:WorkoutCalendarViewModel}}, Path=SelectDayCommand}"
                     CommandParameter="{Binding}" />
             </Label.GestureRecognizers>
+
+            <Label.TextColor>
+                <Binding Path="CalendarTextColor"/>
+            </Label.TextColor>
         </Label>
     </Border>
 </ContentView>
