@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ResourceDictionary xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gym_Logs.Resources.Styles.Brushes">
+
+    <LinearGradientBrush x:Key="PrimaryBrush" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="{DynamicResource PrimaryStart}" Offset="0" />
+        <GradientStop Color="#80FFFFFF" Offset="0.3"/>
+        <GradientStop Color="{DynamicResource PrimaryEnd}" Offset="1" />
+    </LinearGradientBrush>
+
+    <LinearGradientBrush x:Key="SecondaryBrush" StartPoint="0,0" EndPoint="1,1">
+        <GradientStop Color="{DynamicResource SecondaryStart}" Offset="0" />
+        <GradientStop Color="#60FFFFFF" Offset="0.5"/>
+        <GradientStop Color="{DynamicResource SecondaryEnd}" Offset="1" />
+    </LinearGradientBrush>
+
+</ResourceDictionary>

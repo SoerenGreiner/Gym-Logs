@@ -60,6 +60,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Styles\AppThemes\Complementary.json" />
+	  <None Remove="Resources\Styles\AppThemes\Monochromatic.json" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <EmbeddedResource Include="Resources\Styles\AppThemes\Complementary.json" />
+	  <EmbeddedResource Include="Resources\Styles\AppThemes\Monochromatic.json" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="$(MauiVersion)" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.8" />
@@ -70,40 +80,43 @@
 	  <MauiXaml Update="App.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Resources\Styles\AppThemes\Dark.xaml">
+	  <MauiXaml Update="Resources\Styles\Brushes.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Resources\Styles\AppThemes\Light.xaml">
+	  <MauiXaml Update="Resources\Styles\CurrentTheme.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Resources\Styles\AppThemes\MonoBlueDark.xaml">
+	  <MauiXaml Update="Resources\Styles\CorePalette.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Resources\Styles\AppThemes\MonoBlueLight.xaml">
+	  <MauiXaml Update="UI\Controls\CustomSwitch.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Controls\CalendarDayView.xaml">
+	  <MauiXaml Update="Views\Controls\CalendarDayView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Controls\FlyoutItemView.xaml">
+	  <MauiXaml Update="UI\Controls\CustomRadioButton.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Controls\ThemeItemView.xaml">
+	  <MauiXaml Update="Views\Controls\FlyoutItemView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Pages\PersonalView.xaml">
+	  <MauiXaml Update="Views\Controls\ThemeItemView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Pages\SettingsView.xaml">
+	  <MauiXaml Update="Views\Pages\PersonalView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Pages\StatisticView.xaml">
+	  <MauiXaml Update="Views\Pages\SettingsView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Pages\ThemeSelectionView.xaml">
+	  <MauiXaml Update="Views\Pages\StatisticView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="View\Pages\WorkoutCalendarView.xaml">
+	  <MauiXaml Update="Views\Pages\ThemeSelectionView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Pages\WorkoutCalendarView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>
@@ -115,16 +128,15 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Resources\Styles\FeatureThemes\" />
-	</ItemGroup>
-
-	<ItemGroup>
 	  <Compile Update="AppResources.Designer.cs">
 	    <DesignTime>True</DesignTime>
 	    <AutoGen>True</AutoGen>
 	    <DependentUpon>AppResources.resx</DependentUpon>
 	  </Compile>
-	  <Compile Update="View\Pages\AppShellView.xaml.cs">
+	  <Compile Update="Resources\Styles\CurrentTheme.xaml.cs">
+	    <DependentUpon>CurrentTheme.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\Pages\AppShellView.xaml.cs">
 	    <DependentUpon>AppShellView.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>

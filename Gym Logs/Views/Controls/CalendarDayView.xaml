@@ -12,31 +12,25 @@
             HorizontalOptions="Fill"
             VerticalOptions="Fill"
             Stroke="{DynamicResource Accent}"
-            StrokeThickness="1">
+            StrokeThickness="1"
+            Background="{Binding BackgroundBrush}">
 
         <Border.StrokeShape>
             <RoundRectangle CornerRadius="6"/>
         </Border.StrokeShape>
-
-        <Border.Background>
-            <Binding Path="BackgroundBrush"/>
-        </Border.Background>
 
         <Label Text="{Binding DayText}"
                FontAttributes="Bold"
                HorizontalOptions="Fill"
                VerticalOptions="Fill"
                HorizontalTextAlignment="Center"
-               VerticalTextAlignment="Center">
+               VerticalTextAlignment="Center"
+               TextColor="{Binding CalendarTextColor}">
             <Label.GestureRecognizers>
                 <TapGestureRecognizer
                     Command="{Binding Source={RelativeSource AncestorType={x:Type vm:WorkoutCalendarViewModel}}, Path=SelectDayCommand}"
                     CommandParameter="{Binding}" />
             </Label.GestureRecognizers>
-
-            <Label.TextColor>
-                <Binding Path="CalendarTextColor"/>
-            </Label.TextColor>
         </Label>
     </Border>
 </ContentView>

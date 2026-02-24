@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Gym_Logs.UI.Controls.CustomSwitch"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="Root">
+
+    <Border
+        Padding="0"
+        BackgroundColor="Transparent"
+        StrokeThickness="0"
+        Stroke="Transparent"
+        StrokeShape="RoundRectangle 12"
+        HorizontalOptions="Start"
+        VerticalOptions="Center">
+
+        <Grid WidthRequest="52"
+              HeightRequest="28"
+              Padding="3">
+
+            <RoundRectangle x:Name="SwitchTrack"
+                            Fill="{Binding Source={x:Reference Root}, Path=TrackOffColor}"
+                            Stroke="{Binding Source={x:Reference Root}, Path=TrackStrokeColor}"
+                            StrokeThickness="{Binding Source={x:Reference Root}, Path=TrackStrokeThickness}"
+                            CornerRadius="14" />
+
+            <Ellipse x:Name="Thumb"
+                     WidthRequest="22"
+                     HeightRequest="22"
+                     Fill="{Binding Source={x:Reference Root}, Path=ThumbColor}"
+                     Stroke="{Binding Source={x:Reference Root}, Path=ThumbStrokeColor}"
+                     StrokeThickness="{Binding Source={x:Reference Root}, Path=ThumbStrokeThickness}"
+                     HorizontalOptions="Start"
+                     VerticalOptions="Center"/>
+        </Grid>
+
+        <Border.GestureRecognizers>
+            <TapGestureRecognizer Tapped="OnSwitchTapped" />
+        </Border.GestureRecognizers>
+
+    </Border>
+</ContentView>

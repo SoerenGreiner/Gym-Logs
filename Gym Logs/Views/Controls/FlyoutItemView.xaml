@@ -10,14 +10,8 @@
                 HeightRequest="45"
                 HorizontalOptions="Fill"
                 Margin="0"
-                Padding="10,6">
-
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
-                    <GradientStop Color="{DynamicResource PrimaryLight}" Offset="0.0"/>
-                    <GradientStop Color="{DynamicResource PrimaryDark}" Offset="1.0"/>
-                </LinearGradientBrush>
-            </Border.Background>
+                Padding="10,6"
+                Background="{DynamicResource SecondaryBrush}">
 
             <Border.Triggers>
                 <DataTrigger TargetType="Border"

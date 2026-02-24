@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Gym_Logs.View.Controls.ThemeItemView">
+
+    <ContentView.Resources>
+        <Style x:Key="ThemePreviewBox" TargetType="Border">
+            <Setter Property="WidthRequest" Value="22"/>
+            <Setter Property="HeightRequest" Value="22"/>
+            <Setter Property="Stroke" Value="Black"/>
+            <Setter Property="StrokeThickness" Value="1"/>
+            <Setter Property="StrokeShape">
+                <Setter.Value>
+                    <RoundRectangle CornerRadius="4"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </ContentView.Resources>
+
+    <Border Stroke="{Binding AccentColor}" StrokeThickness="1" Padding="8" >
+        <Border.Background>
+            <RadialGradientBrush Center="0,0" Radius="1">
+                <GradientStop Color="{Binding PrimaryStartColor}" Offset="0"/>
+                <GradientStop Color="{Binding PrimaryEndColor}" Offset="1"/>
+            </RadialGradientBrush>
+        </Border.Background>
+        <Border.StrokeShape>
+            <RoundRectangle CornerRadius="6"/>
+        </Border.StrokeShape>
+
+        <Grid ColumnDefinitions="*,Auto,*" RowDefinitions="*">
+            <Border Grid.Column="0" WidthRequest="40" HeightRequest="40" Margin="2" HorizontalOptions="End">
+                <Border.Background>
+                    <RadialGradientBrush Center="0,0" Radius="1">
+                        <GradientStop Color="{Binding PrimaryStartColor}" Offset="0"/>
+                        <GradientStop Color="{Binding PrimaryEndColor}" Offset="1"/>
+                    </RadialGradientBrush>
+                </Border.Background>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="6"/>
+                </Border.StrokeShape>
+            </Border>
+
+            <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="Center">
+                <Label Text="{Binding LocalizedDisplayName}" 
+                       HorizontalOptions="Center"
+                       FontAttributes="Bold"
+                       TextColor="{Binding PrimaryTextColorColor}" />
+
+                <HorizontalStackLayout Spacing="4" HorizontalOptions="Center">
+                    <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{Binding PrimaryStartColor}" />
+                    <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{Binding PrimaryEndColor}" />
+                    <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{Binding SecondaryStartColor}" />
+                    <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{Binding SecondaryEndColor}" />
+                    <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{Binding AccentColor}" />
+                </HorizontalStackLayout>
+            </VerticalStackLayout>
+
+            <Border Grid.Column="2" WidthRequest="40" HeightRequest="40" Margin="2" HorizontalOptions="Start">
+                <Border.Background>
+                    <RadialGradientBrush Center="0,0" Radius="1">
+                        <GradientStop Color="{Binding SecondaryStartColor}" Offset="0"/>
+                        <GradientStop Color="{Binding SecondaryEndColor}" Offset="1"/>
+                    </RadialGradientBrush>
+                </Border.Background>
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="6"/>
+                </Border.StrokeShape>
+            </Border>
+        </Grid>
+    </Border>
+</ContentView>
+

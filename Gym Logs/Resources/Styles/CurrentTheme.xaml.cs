@@ -1,8 +1,8 @@
 namespace Gym_Logs.Resources.Styles.AppThemes;
 
-public partial class Light : ResourceDictionary
+public partial class CurrentTheme : ResourceDictionary
 {
-	public Light()
+	public CurrentTheme()
 	{
 		InitializeComponent();
 	}

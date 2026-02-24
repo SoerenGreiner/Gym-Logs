@@ -23,8 +23,8 @@
                     VerticalOptions="Fill">
                 <Border.Background>
                     <RadialGradientBrush Center="0,0" Radius="1">
-                        <GradientStop Color="{DynamicResource PrimaryLight}" Offset="0.0" />
-                        <GradientStop Color="{DynamicResource PrimaryDark}" Offset="1.0" />
+                        <GradientStop Color="{DynamicResource PrimaryStart}" Offset="0.0" />
+                        <GradientStop Color="{DynamicResource PrimaryEnd}" Offset="1.0" />
                     </RadialGradientBrush>
                 </Border.Background>
             </Border>

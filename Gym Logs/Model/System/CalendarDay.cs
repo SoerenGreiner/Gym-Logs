@@ -2,6 +2,7 @@
 using System.ComponentModel;
 using Microsoft.Maui.Controls;
 using Microsoft.Maui.Graphics;
+using Gym_Logs.Model.System;
 
 namespace Gym_Logs.Model.System
 {
@@ -32,11 +33,11 @@ namespace Gym_Logs.Model.System
                 OnPropertyChanged(nameof(DayText));
                 OnPropertyChanged(nameof(IsEnabled));
                 OnPropertyChanged(nameof(BackgroundBrush));
+                OnPropertyChanged(nameof(CalendarTextColor));
             }
         }
 
-        public string DayText =>
-            State == CalendarDayState.Header ? DayName : Date.Day.ToString("D2");
+        public string DayText => State == CalendarDayState.Header ? DayName : Date.Day.ToString("D2");
 
         public bool IsEnabled => State != CalendarDayState.Header && State != CalendarDayState.Inactive;
 
@@ -44,9 +45,6 @@ namespace Gym_Logs.Model.System
         {
             get
             {
-                if (Application.Current?.Resources == null)
-                    return Colors.Transparent;
-
                 string key = State switch
                 {
                     CalendarDayState.Header => "CalendarHeaderBrush",
@@ -68,9 +66,6 @@ namespace Gym_Logs.Model.System
         {
             get
             {
-                if (Application.Current?.Resources == null)
-                    return Colors.Black;
-
                 string key = State switch
                 {
                     CalendarDayState.Header => "CalendarHeaderTextColor",
@@ -90,12 +85,15 @@ namespace Gym_Logs.Model.System
 
         public event PropertyChangedEventHandler PropertyChanged;
 
-        void OnPropertyChanged(string name) =>
+        protected void OnPropertyChanged(string name) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
 
         public void RaiseThemeChanged()
         {
             OnPropertyChanged(nameof(BackgroundBrush));
+            OnPropertyChanged(nameof(CalendarTextColor));
         }
     }
 }
+
+

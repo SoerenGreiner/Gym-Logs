@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:Gym_Logs.ViewModel"
+             xmlns:controls="clr-namespace:Gym_Logs.UI.Controls"
+             x:Class="Gym_Logs.View.SettingsView">
+
+    <ContentPage.Resources>
+        <Style x:Key="ThemePreviewBox" TargetType="Border">
+            <Setter Property="WidthRequest" Value="22"/>
+            <Setter Property="HeightRequest" Value="22"/>
+            <Setter Property="Stroke" Value="Black"/>
+            <Setter Property="StrokeThickness" Value="1"/>
+            <Setter Property="StrokeShape">
+                <Setter.Value>
+                    <RoundRectangle CornerRadius="4"/>
+                </Setter.Value>
+            </Setter>
+        </Style>
+    </ContentPage.Resources>
+
+    <ScrollView>
+        <Grid Padding="16"
+              RowSpacing="20"
+              RowDefinitions="Auto,Auto,Auto">
+
+            <!-- ================= THEMES ================= -->
+            <VerticalStackLayout Grid.Row="0" Spacing="5">
+                <Border Stroke="{DynamicResource Accent}"
+                        Background="{DynamicResource PrimaryBrush}"
+                        StrokeThickness="2"
+                        Padding="8"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="4"/>
+                    </Border.StrokeShape>
+
+                    <Label Text="Themes:"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           TextColor="{DynamicResource PrimaryTextColor}" />
+                </Border>
+
+                <Border Stroke="{DynamicResource Accent}"
+                        Background="{DynamicResource SecondaryBrush}"
+                        StrokeThickness="2"
+                        Padding="5"
+                        HorizontalOptions="Fill"
+                        VerticalOptions="Center">
+
+                    <Border.StrokeShape>
+                        <RoundRectangle CornerRadius="4"/>
+                    </Border.StrokeShape>
+
+                    <VerticalStackLayout Spacing="10">
+
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                            <VerticalStackLayout Grid.Column="0">
+                                
+                                <Label Text="{Binding CurrentTheme.DisplayName}"
+                                       FontAttributes="Bold"
+                                       TextColor="{DynamicResource PrimaryTextColor}"
+                                       HorizontalOptions="Center"/>
+                                
+                                <HorizontalStackLayout Spacing="6"
+                                                       HorizontalOptions="Center">
+
+                                <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource PrimaryStart}" />
+                                <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource PrimaryEnd}" />
+                                <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource SecondaryStart}" />
+                                <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource SecondaryEnd}" />
+                                <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource Accent}" />
+
+                                </HorizontalStackLayout>
+                                
+                            </VerticalStackLayout>
+
+                            <Label Grid.Column="1"
+                                   Text="›"
+                                   FontSize="26"
+                                   Margin="0,0,30,0"
+                                   TextColor="{DynamicResource Accent}" />
+
+                            <Grid.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding OpenThemeSelectionCommand}" />
+                            </Grid.GestureRecognizers>
+                        </Grid>
+
+                        <BoxView HeightRequest="2"
+                                 Margin="30,0,30,0"
+                                 Opacity="0.3"
+                                 BackgroundColor="{DynamicResource Accent}" />
+
+                        <Grid ColumnDefinitions="*,*,*">
+                            <controls:CustomRadioButton Grid.Column="0" 
+                                                        Text="Light"
+                                                        GroupName="Brightness"
+                                                        IsSelected="{Binding IsLightSelected, Mode=TwoWay}"
+                                                        OuterStrokeColor="{DynamicResource Accent}"
+                                                        InnerFillColor="{DynamicResource Accent}"
+                                                        OuterSize="24"
+                                                        InnerSize="14"
+                                                        OuterStrokeThickness="2"/>
+                            <controls:CustomRadioButton Grid.Column="1" 
+                                                        Text="Normal"
+                                                        GroupName="Brightness"
+                                                        IsSelected="{Binding IsNormalSelected, Mode=TwoWay}"
+                                                        OuterStrokeColor="{DynamicResource Accent}"
+                                                        InnerFillColor="{DynamicResource Accent}"
+                                                        OuterSize="24"
+                                                        InnerSize="14"
+                                                        OuterStrokeThickness="2"/>
+                            <controls:CustomRadioButton Grid.Column="2" 
+                                                        Text="Dark"
+                                                        GroupName="Brightness"
+                                                        IsSelected="{Binding IsDarkSelected, Mode=TwoWay}"
+                                                        OuterStrokeColor="{DynamicResource Accent}"
+                                                        InnerFillColor="{DynamicResource Accent}"
+                                                        OuterSize="24"
+                                                        InnerSize="14"
+                                                        OuterStrokeThickness="2"/>
+                        </Grid>
+
+                        <BoxView HeightRequest="2"
+                                 Margin="30,0,30,0"
+                                 Opacity="0.3"
+                                 BackgroundColor="{DynamicResource Accent}" />
+
+                        <Grid ColumnDefinitions="*,*" HorizontalOptions="Fill" VerticalOptions="Center">
+                            <Label Grid.Column="0"
+                                   Text="Invertierter Farben"
+                                   Margin="30,0,30,0"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center"
+                                   TextColor="{DynamicResource PrimaryTextColor}" />
+
+                            <controls:CustomSwitch Grid.Column="1"
+                                                   HorizontalOptions="End"
+                                                   Margin="30,0,30,0"
+                                                   IsToggled="{Binding IsBrushInverted, Mode=TwoWay}" 
+                                                   TrackOnColor="{DynamicResource Accent}"
+                                                   TrackOffColor="{DynamicResource SecondaryEnd}"
+                                                   ThumbColor="{DynamicResource SecondaryStart}"
+                                                   TrackStrokeColor="{DynamicResource Accent}"
+                                                   TrackStrokeThickness="1"
+                                                   ThumbStrokeColor="{DynamicResource Accent}"
+                                                   ThumbStrokeThickness="0.5"/>
+                        </Grid>
+
+                        <BoxView HeightRequest="2"
+                                 Margin="30,0,30,0"
+                                 Opacity="0.3"
+                                 BackgroundColor="{DynamicResource Accent}" />
+
+                        <Grid ColumnDefinitions="*,*" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0,0,0,0">
+                            <Label Grid.Column="0"
+                                   Text="Invertierter Farbverlauf"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center"
+                                   Margin="30,0,10,0"
+                                   TextColor="{DynamicResource PrimaryTextColor}" />
+
+                            <controls:CustomSwitch Grid.Column="1"
+                                                   HorizontalOptions="End"
+                                                   Margin="0,0,30,0"
+                                                   IsToggled="{Binding AreBrushStartPointsInverted, Mode=TwoWay}" 
+                                                   TrackOnColor="{DynamicResource Accent}"
+                                                   TrackOffColor="{DynamicResource SecondaryEnd}"
+                                                   ThumbColor="{DynamicResource SecondaryStart}"
+                                                   TrackStrokeColor="{DynamicResource Accent}"
+                                                   TrackStrokeThickness="1"
+                                                   ThumbStrokeColor="{DynamicResource Accent}"
+                                                   ThumbStrokeThickness="0.5"/>
+                        </Grid>
+
+                    </VerticalStackLayout>
+                </Border>
+            </VerticalStackLayout>
+
+            <!-- ================= DIVIDER ================= -->
+            <BoxView Grid.Row="1"
+                     HeightRequest="1"
+                     BackgroundColor="{DynamicResource InactiveStart}" />
+
+            <!-- ================= GENERAL (später) ================= -->
+            <VerticalStackLayout Grid.Row="2">
+                <!-- hier kommen später Sprache, Schriftart usw -->
+            </VerticalStackLayout>
+
+        </Grid>
+    </ScrollView>
+</ContentPage>
+
+

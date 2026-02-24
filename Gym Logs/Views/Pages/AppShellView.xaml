@@ -6,8 +6,9 @@
        xmlns:vm="clr-namespace:Gym_Logs.ViewModel"
        xmlns:controls="clr-namespace:Gym_Logs.View.Controls"
        Title="Gym Logs"
-       FlyoutBackgroundColor="{DynamicResource PrimaryLight}"
-       BackgroundColor="{DynamicResource Background}">
+       Background="{DynamicResource PrimaryBrush}"
+       BackgroundColor="{DynamicResource PrimaryStart}"
+       FlyoutBackground="{DynamicResource PrimaryBrush}">
 
     <Shell.BindingContext>
         <vm:AppShellViewModel/>

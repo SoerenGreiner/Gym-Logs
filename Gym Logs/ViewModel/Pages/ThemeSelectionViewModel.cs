@@ -10,8 +10,7 @@ namespace Gym_Logs.ViewModel.Pages
     {
         private readonly ThemeService _themeService;
 
-        public ObservableCollection<AppThemeModel> AvailableThemes { get; }
-        = new ObservableCollection<AppThemeModel>(ThemeRegistry.GetAllThemes());
+        public ObservableCollection<ThemeCategoryModel> ThemeCategories { get; } = new();
 
         [ObservableProperty]
         AppThemeModel selectedTheme;
@@ -20,8 +19,11 @@ namespace Gym_Logs.ViewModel.Pages
         {
             _themeService = App.ThemeService;
 
-            AvailableThemes = new ObservableCollection<AppThemeModel>(
-                ThemeRegistry.GetAllThemes());
+            var categories = ThemeFactory.LoadThemeCategories();
+            foreach (var category in categories)
+            {
+                ThemeCategories.Add(category);
+            }
 
             SelectedTheme = _themeService.CurrentTheme;
         }
@@ -29,10 +31,17 @@ namespace Gym_Logs.ViewModel.Pages
         [RelayCommand]
         void ThemeSelected(AppThemeModel theme)
         {
-            _themeService.Apply(theme);
+            _themeService.ApplyTheme(theme);
             SelectedTheme = theme;
-
             Shell.Current.GoToAsync("..");
+        }
+
+        [RelayCommand]
+        void ToggleCategory(ThemeCategoryModel category)
+        {
+            category.IsExpanded = !category.IsExpanded;
         }
     }
 }
+
+
