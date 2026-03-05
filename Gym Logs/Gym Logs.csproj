@@ -60,13 +60,31 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <None Remove="Resources\Styles\AppThemes\Analogous.json" />
 	  <None Remove="Resources\Styles\AppThemes\Complementary.json" />
+	  <None Remove="Resources\Styles\AppThemes\MixedAnalogous.json" />
+	  <None Remove="Resources\Styles\AppThemes\MixedComplementary.json" />
+	  <None Remove="Resources\Styles\AppThemes\MixedPartiallyComplementary.json" />
+	  <None Remove="Resources\Styles\AppThemes\MixedTetradic.json" />
+	  <None Remove="Resources\Styles\AppThemes\MixedTriadic.json" />
 	  <None Remove="Resources\Styles\AppThemes\Monochromatic.json" />
+	  <None Remove="Resources\Styles\AppThemes\PartiallyComplementary.json" />
+	  <None Remove="Resources\Styles\AppThemes\Tetradic.json" />
+	  <None Remove="Resources\Styles\AppThemes\Triadic.json" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <EmbeddedResource Include="Resources\Styles\AppThemes\Complementary.json" />
-	  <EmbeddedResource Include="Resources\Styles\AppThemes\Monochromatic.json" />
+	  <EmbeddedResource Include="Resources\Styles\AppThemes\Normal\Analogous.json" />
+	  <EmbeddedResource Include="Resources\Styles\AppThemes\Normal\Complementary.json" />
+	  <EmbeddedResource Include="Resources\Styles\AppThemes\Mixed\Analogous.json" />
+	  <EmbeddedResource Include="Resources\Styles\AppThemes\Mixed\Complementary.json" />
+	  <EmbeddedResource Include="Resources\Styles\AppThemes\Mixed\PartiallyComplementary.json" />
+	  <EmbeddedResource Include="Resources\Styles\AppThemes\Mixed\Tetradic.json" />
+	  <EmbeddedResource Include="Resources\Styles\AppThemes\Mixed\Triadic.json" />
+	  <EmbeddedResource Include="Resources\Styles\AppThemes\Normal\Monochromatic.json" />
+	  <EmbeddedResource Include="Resources\Styles\AppThemes\Normal\PartiallyComplementary.json" />
+	  <EmbeddedResource Include="Resources\Styles\AppThemes\Normal\Tetradic.json" />
+	  <EmbeddedResource Include="Resources\Styles\AppThemes\Normal\Triadic.json" />
 	</ItemGroup>
 
 	<ItemGroup>

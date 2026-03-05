@@ -82,9 +82,9 @@ public class ThemeService : INotifyPropertyChanged
     public void LoadSavedTheme()
     {
         var saved = Preferences.Default.Get<string>(PrefKey, null);
-        var theme = string.IsNullOrEmpty(saved)
-            ? Themes.First()
-            : Themes.First(t => t.Name == saved);
+
+        var theme = Themes.FirstOrDefault(t => t.Name == saved)
+                    ?? Themes.FirstOrDefault();
 
         ApplyTheme(theme);
     }
@@ -153,7 +153,7 @@ public class ThemeService : INotifyPropertyChanged
         r["PrimaryEnd"] = C(primaryEnd);
         r["SecondaryStart"] = C(secondaryStart);
         r["SecondaryEnd"] = C(secondaryEnd);
-        r["Accent"] = C(theme.Accent);
+        r["Accent"] = C(theme.PrimaryAccent);
 
         r["PrimaryTextColor"] = GetContrastingText(C(primaryStart));
 

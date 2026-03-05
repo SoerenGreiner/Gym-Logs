@@ -3,16 +3,52 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Gym_Logs.Resources.Styles.Brushes">
 
-    <LinearGradientBrush x:Key="PrimaryBrush" StartPoint="0,0" EndPoint="1,1">
+    <RadialGradientBrush x:Key="PrimaryBrush" Center="0,0" Radius="1">
         <GradientStop Color="{DynamicResource PrimaryStart}" Offset="0" />
-        <GradientStop Color="#80FFFFFF" Offset="0.3"/>
+        <GradientStop Color="{DynamicResource White}" Offset="0.5"/>
         <GradientStop Color="{DynamicResource PrimaryEnd}" Offset="1" />
-    </LinearGradientBrush>
+    </RadialGradientBrush>
 
-    <LinearGradientBrush x:Key="SecondaryBrush" StartPoint="0,0" EndPoint="1,1">
+    <RadialGradientBrush x:Key="SecondaryBrush" Center="0,0" Radius="1">
         <GradientStop Color="{DynamicResource SecondaryStart}" Offset="0" />
-        <GradientStop Color="#60FFFFFF" Offset="0.5"/>
+        <GradientStop Color="{DynamicResource White}" Offset="0.5"/>
         <GradientStop Color="{DynamicResource SecondaryEnd}" Offset="1" />
-    </LinearGradientBrush>
+    </RadialGradientBrush>
+
+    <RadialGradientBrush x:Key="CalendarHeaderBrush" Center="0,0" Radius="1">
+        <GradientStop Color="{DynamicResource SecondaryStart}" Offset="0"/>
+        <GradientStop Color="{DynamicResource White}" Offset="0.5"/>
+        <GradientStop Color="{DynamicResource SecondaryEnd}" Offset="1"/>
+    </RadialGradientBrush>
+
+    <RadialGradientBrush x:Key="CalendarNormalBrush" Center="0,0" Radius="1">
+        <GradientStop Color="{DynamicResource GrayLight}" Offset="0"/>
+        <GradientStop Color="{DynamicResource White}" Offset="0.5"/>
+        <GradientStop Color="{DynamicResource GrayDark}" Offset="1"/>
+    </RadialGradientBrush>
+
+    <RadialGradientBrush x:Key="CalendarTodayBrush" Center="0,0" Radius="1">
+        <GradientStop Color="{DynamicResource Yellow}" Offset="0"/>
+        <GradientStop Color="{DynamicResource White}" Offset="0.5"/>
+        <GradientStop Color="{DynamicResource YellowDarkest}" Offset="1"/>
+    </RadialGradientBrush>
+
+    <RadialGradientBrush x:Key="CalendarWorkoutBrush" Center="0,0" Radius="1">
+        <GradientStop Color="{DynamicResource Blue}" Offset="0"/>
+        <GradientStop Color="{DynamicResource White}" Offset="0.5"/>
+        <GradientStop Color="{DynamicResource BlueDarkest}" Offset="1"/>
+    </RadialGradientBrush>
+
+    <RadialGradientBrush x:Key="CalendarBodyBrush" Center="0,0" Radius="1">
+        <GradientStop Color="{DynamicResource Green}" Offset="0"/>
+        <GradientStop Color="{DynamicResource White}" Offset="0.5"/>
+        <GradientStop Color="{DynamicResource GreenDarkest}" Offset="1"/>
+    </RadialGradientBrush>
+
+    <RadialGradientBrush x:Key="CalendarInactiveBrush" Center="0,0" Radius="1">
+        <GradientStop Color="{DynamicResource Gray}" Offset="0"/>
+        <GradientStop Color="{DynamicResource White}" Offset="0.5"/>
+        <GradientStop Color="{DynamicResource GrayDarkest}" Offset="1"/>
+    </RadialGradientBrush>
 
 </ResourceDictionary>

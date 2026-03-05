@@ -3,36 +3,12 @@ namespace Gym_Logs.Enums
 {
     public enum PaletteColorKey
     {
-        // String
-        displayName,
-
-        // Blue Shades
-        BlueLightest,
-        BlueLight,
-        Blue,
-        BlueDark,
-        BlueDarkest,
-
-        // Indigo Shades
-        IndigoLightest,
-        IndigoLight,
-        Indigo,
-        IndigoDark,
-        IndigoDarkest,
-
-        // Green Shades
-        GreenLightest,
-        GreenLight,
-        Green,
-        GreenDark,
-        GreenDarkest,
-
-        // Yellow Shades
-        YellowLightest,
-        YellowLight,
-        Yellow,
-        YellowDark,
-        YellowDarkest,
+        // Red Shades
+        RedLightest,
+        RedLight,
+        Red,
+        RedDark,
+        RedDarkest,
 
         // Orange Shades
         OrangeLightest,
@@ -41,26 +17,12 @@ namespace Gym_Logs.Enums
         OrangeDark,
         OrangeDarkest,
 
-        // Red Shades
-        RedLightest,
-        RedLight,
-        Red,
-        RedDark,
-        RedDarkest,
-
-        // Teal Shades
-        TealLightest,
-        TealLight,
-        Teal,
-        TealDark,
-        TealDarkest,
-
-        // Violet Shades
-        VioletLightest,
-        VioletLight,
-        Violet,
-        VioletDark,
-        VioletDarkest,
+        // Yellow Shades
+        YellowLightest,
+        YellowLight,
+        Yellow,
+        YellowDark,
+        YellowDarkest,
 
         // Lime Shades
         LimeLightest,
@@ -69,12 +31,47 @@ namespace Gym_Logs.Enums
         LimeDark,
         LimeDarkest,
 
-        // Brown Shades
-        BrownLightest,
-        BrownLight,
-        Brown,
-        BrownDark,
-        BrownDarkest,
+        // Green Shades
+        GreenLightest,
+        GreenLight,
+        Green,
+        GreenDark,
+        GreenDarkest,
+
+        // Teal Shades
+        TealLightest,
+        TealLight,
+        Teal,
+        TealDark,
+        TealDarkest,
+
+        // Cyan Shades
+        CyanLightest,
+        CyanLight,
+        Cyan,
+        CyanDark,
+        CyanDarkest,
+
+        // Azure Shades
+        AzureLightest,
+        AzureLight,
+        Azure,
+        AzureDark,
+        AzureDarkest,
+
+        // Blue Shades
+        BlueLightest,
+        BlueLight,
+        Blue,
+        BlueDark,
+        BlueDarkest,
+
+        // Violet Shades
+        VioletLightest,
+        VioletLight,
+        Violet,
+        VioletDark,
+        VioletDarkest,
 
         // Magenta Shades
         MagentaLightest,
@@ -83,33 +80,26 @@ namespace Gym_Logs.Enums
         MagentaDark,
         MagentaDarkest,
 
-        //Amber Shades
-        AmberLightest,
-        AmberLight,
-        Amber,
-        AmberDark,
-        AmberDarkest,
+        //Pink Shades
+        PinkLightest,
+        PinkLight,
+        Pink,
+        PinkDark,
+        PinkDarkest,
 
-        // Gray Shades
+        // Black / Gray / White Shades
+        WhiteLightest,
+        WhiteLight,
+        White,
+        WhiteDark,
+        WhiteDarkest,
         GrayLightest,
         GrayLight,
         Gray,
         GrayDark,
         GrayDarkest,
-
-        // Black Shades
-        BlackLightest,
+        Blacklightest,
         BlackLight,
-        Black,
-        BlackDark,
-        BlackDarkest,
-
-        // White Shades
-        WhiteLightest,
-        WhiteLight,
-        White,
-        WhiteDark,
-        WhiteDarkest
+        Black
     }
 }
-

@@ -3,108 +3,101 @@
                     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                     x:Class="Gym_Logs.Resources.Styles.CorePalette">
 
-    <!-- Blue Shades -->
-    <Color x:Key="BlueLightest">#E3F2FD</Color>
-    <Color x:Key="BlueLight">#64B5F6</Color>
-    <Color x:Key="Blue">#2196F3</Color>
-    <Color x:Key="BlueDark">#1565C0</Color>
-    <Color x:Key="BlueDarkest">#0D47A1</Color>
+    <!-- Red Shades -->
+    <Color x:Key="RedLightest">#FF9999</Color>
+    <Color x:Key="RedLight">#FF4D4D</Color>
+    <Color x:Key="Red">#FF0000</Color>
+    <Color x:Key="RedDark">#B30000</Color>
+    <Color x:Key="RedDarkest">#660000</Color>
 
-    <!-- Indigo Shades -->
-    <Color x:Key="IndigoLightest">#E8EAF6</Color>
-    <Color x:Key="IndigoLight">#7986CB</Color>
-    <Color x:Key="Indigo">#3F51B5</Color>
-    <Color x:Key="IndigoDark">#303F9F</Color>
-    <Color x:Key="IndigoDarkest">#1A237E</Color>
+    <!-- Orange Shades -->
+    <Color x:Key="OrangeLightest">#FFCC99</Color>
+    <Color x:Key="OrangeLight">#FFA64D</Color>
+    <Color x:Key="Orange">#FF8000</Color>
+    <Color x:Key="OrangeDark">#B35900</Color>
+    <Color x:Key="OrangeDarkest">#663300</Color>
+
+    <!-- Yellow Shades -->
+    <Color x:Key="YellowLightest">#FFFF99</Color>
+    <Color x:Key="YellowLight">#FFFF4D</Color>
+    <Color x:Key="Yellow">#FFFF00</Color>
+    <Color x:Key="YellowDark">#B3B300</Color>
+    <Color x:Key="YellowDarkest">#666600</Color>
+
+    <!-- Lime Shades -->
+    <Color x:Key="LimeLightest">#CCFF99</Color>
+    <Color x:Key="LimeLight">#A6FF4D</Color>
+    <Color x:Key="Lime">#80FF00</Color>
+    <Color x:Key="LimeDark">#59B300</Color>
+    <Color x:Key="LimeDarkest">#336600</Color>
 
     <!-- Green Shades -->
-    <Color x:Key="GreenLightest">#E8F5E9</Color>
-    <Color x:Key="GreenLight">#81C784</Color>
-    <Color x:Key="Green">#4CAF50</Color>
+    <Color x:Key="GreenLightest">#99FF99</Color>
+    <Color x:Key="GreenLight">#4DFF4D</Color>
+    <Color x:Key="Green">#00FF00</Color>
     <Color x:Key="GreenDark">#388E3C</Color>
     <Color x:Key="GreenDarkest">#1B5E20</Color>
 
-    <!-- Yellow Shades -->
-    <Color x:Key="YellowLightest">#FFFFE0</Color>
-    <Color x:Key="YellowLight">#FFFF99</Color>
-    <Color x:Key="Yellow">#FFFF00</Color>
-    <Color x:Key="YellowDark">#FFEA00</Color>
-    <Color x:Key="YellowDarkest">#FFD600</Color>
-
-    <!-- Orange Shades -->
-    <Color x:Key="OrangeLightest">#FFF3E0</Color>
-    <Color x:Key="OrangeLight">#FFB74D</Color>
-    <Color x:Key="Orange">#FF9800</Color>
-    <Color x:Key="OrangeDark">#F57C00</Color>
-    <Color x:Key="OrangeDarkest">#E65100</Color>
-
-    <!-- Red Shades -->
-    <Color x:Key="RedLightest">#FFEBEE</Color>
-    <Color x:Key="RedLight">#E57373</Color>
-    <Color x:Key="Red">#D32F2F</Color>
-    <Color x:Key="RedDark">#C62828</Color>
-    <Color x:Key="RedDarkest">#B71C1C</Color>
-
     <!-- Teal Shades -->
-    <Color x:Key="TealLightest">#E0F2F1</Color>
-    <Color x:Key="TealLight">#4DB6AC</Color>
-    <Color x:Key="Teal">#009688</Color>
-    <Color x:Key="TealDark">#00796B</Color>
-    <Color x:Key="TealDarkest">#004D40</Color>
+    <Color x:Key="TealLightest">#99FFCC</Color>
+    <Color x:Key="TealLight">#4DFFA6</Color>
+    <Color x:Key="Teal">#00FF80</Color>
+    <Color x:Key="TealDark">#00B359</Color>
+    <Color x:Key="TealDarkest">#006633</Color>
+
+    <!-- Cyan Shades -->
+    <Color x:Key="CyanLightest">#99FFFF</Color>
+    <Color x:Key="CyanLight">#4DFFFF</Color>
+    <Color x:Key="Cyan">#00FFFF</Color>
+    <Color x:Key="CyanDark">#00B3B3</Color>
+    <Color x:Key="CyanDarkest">#006666</Color>
+
+    <!-- Azure Shades -->
+    <Color x:Key="AzureLightest">#99CCFF</Color>
+    <Color x:Key="AzureLight">#4DA6FF</Color>
+    <Color x:Key="Azure">#0080FF</Color>
+    <Color x:Key="AzureDark">#0059B3</Color>
+    <Color x:Key="AzureDarkest">#003366</Color>
+    
+    <!-- Blue Shades -->
+    <Color x:Key="BlueLightest">#9999FF</Color>
+    <Color x:Key="BlueLight">#4D4DFF</Color>
+    <Color x:Key="Blue">#0000FF</Color>
+    <Color x:Key="BlueDark">#0000B3</Color>
+    <Color x:Key="BlueDarkest">#000066</Color>
 
     <!-- Violet Shades -->
-    <Color x:Key="VioletLightest">#F3E5F5</Color>
-    <Color x:Key="VioletLight">#CE93D8</Color>
-    <Color x:Key="Violet">#9C27B0</Color>
-    <Color x:Key="VioletDark">#7B1FA2</Color>
-    <Color x:Key="VioletDarkest">#4A148C</Color>
-
-    <!-- Lime Shades -->
-    <Color x:Key="LimeLightest">#F9FBE7</Color>
-    <Color x:Key="LimeLight">#DCE775</Color>
-    <Color x:Key="Lime">#CDDC39</Color>
-    <Color x:Key="LimeDark">#AFB42B</Color>
-    <Color x:Key="LimeDarkest">#827717</Color>
-
-    <!-- Brown Shades -->
-    <Color x:Key="BrownLightest">#EFEBE9</Color>
-    <Color x:Key="BrownLight">#A1887F</Color>
-    <Color x:Key="Brown">#795548</Color>
-    <Color x:Key="BrownDark">#5D4037</Color>
-    <Color x:Key="BrownDarkest">#3E2723</Color>
-
+    <Color x:Key="VioletLightest">#CC99FF</Color>
+    <Color x:Key="VioletLight">#A64DFF</Color>
+    <Color x:Key="Violet">#8000FF</Color>
+    <Color x:Key="VioletDark">#5900B3</Color>
+    <Color x:Key="VioletDarkest">#330066</Color>
+    
     <!-- Magenta Shades -->
-    <Color x:Key="MagentaLightest">#FFE5F5</Color>
-    <Color x:Key="MagentaLight">#FF80FF</Color>
+    <Color x:Key="MagentaLightest">#FF99FF</Color>
+    <Color x:Key="MagentaLight">#FF4DFF</Color>
     <Color x:Key="Magenta">#FF00FF</Color>
-    <Color x:Key="MagentaDark">#990099</Color>
+    <Color x:Key="MagentaDark">#B300B3</Color>
     <Color x:Key="MagentaDarkest">#660066</Color>
 
-    <!-- Amber Shades -->
-    <Color x:Key="AmberLightest">#FFF8E1</Color>
-    <Color x:Key="AmberLight">#FFECB3</Color>
-    <Color x:Key="Amber">#FFC107</Color>
-    <Color x:Key="AmberDark">#FFA000</Color>
-    <Color x:Key="AmberDarkest">#FF6F00</Color>
+    <!-- Pink Shades -->
+    <Color x:Key="PinkLightest">#FF99CC</Color>
+    <Color x:Key="PinkLight">#FF4DA6</Color>
+    <Color x:Key="Pink">#FF0080</Color>
+    <Color x:Key="PinkDark">#B30059</Color>
+    <Color x:Key="PinkDarkest">#660033</Color>
 
-    <!-- Gray Shades -->
-    <Color x:Key="GrayLightest">#F5F5F5</Color>
-    <Color x:Key="GrayLight">#E0E0E0</Color>
-    <Color x:Key="Gray">#9E9E9E</Color>
-    <Color x:Key="GrayDark">#616161</Color>
-    <Color x:Key="GrayDarkest">#212121</Color>
+    <!-- Black / Gray / White Shades -->
+    <Color x:Key="White">#FFFFFF</Color>
+    <Color x:Key="WhiteDark">#E6E6E6</Color>
+    <Color x:Key="WhiteDarkest">#CCCCCC</Color>
+    <Color x:Key="GrayLightest">#B3B3B3</Color>
+    <Color x:Key="GrayLight">#999999</Color>
+    <Color x:Key="Gray">#808080</Color>
+    <Color x:Key="GrayDark">#666666</Color>
+    <Color x:Key="GrayDarkest">#4D4D4D</Color>
+    <Color x:Key="Blacklightest">#333333</Color>
+    <Color x:Key="BlackLight">#1A1A1A</Color>
+    <Color x:Key="Black">#000000</Color>
 
-    <!-- Black Shades -->
-    <Color x:Key="BlackLightest">#BDBDBD</Color>
-    <Color x:Key="BlackLight">#757575</Color>
-    <Color x:Key="Black">#212121</Color>
-    <Color x:Key="BlackDark">#121212</Color>
-    <Color x:Key="BlackDarkest">#000000</Color>
-
-    <!-- White Shades -->
-    <Color x:Key="WhiteLightest">#FFFFFF</Color>
-    <Color x:Key="WhiteLight">#FAFAFA</Color>
-    <Color x:Key="White">#F5F5F5</Color>
-    <Color x:Key="WhiteDark">#EEEEEE</Color>
-    <Color x:Key="WhiteDarkest">#E0E0E0</Color>
 </ResourceDictionary>

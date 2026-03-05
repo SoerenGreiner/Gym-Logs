@@ -12,7 +12,7 @@
                     <Border HeightRequest="65"
                             Margin="4"
                             Background="{DynamicResource PrimaryBrush}"
-                            Stroke="{DynamicResource Accent}"
+                            Stroke="{DynamicResource PrimaryAccent}"
                             StrokeThickness="1">
 
                         <Border.StrokeShape>
@@ -53,7 +53,7 @@
                                     <Setter.Value>
                                         <RadialGradientBrush Center="0,0" Radius="1">
                                             <GradientStop Color="{DynamicResource PrimaryStart}" Offset="0"/>
-                                            <GradientStop Color="{DynamicResource Accent}" Offset="1"/>
+                                            <GradientStop Color="{DynamicResource PrimaryAccent}" Offset="1"/>
                                         </RadialGradientBrush>
                                     </Setter.Value>
                                 </Setter>

@@ -1,0 +1,134 @@
+[
+  {
+    "name": "RedLimeCyanViolet",
+    "displayName": "Red Lime Cyan Violet",
+    "primaryStart": "Red",
+    "primaryEnd": "LimeDarkest",
+    "secondaryStart": "RedLight",
+    "secondaryEnd": "LimeDark",
+    "primaryAccent": "CyanLightest",
+    "secondaryAccent": "VioletLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "OrangeGreenAzureMagenta",
+    "displayName": "Orange Green Azure Magenta",
+    "primaryStart": "Orange",
+    "primaryEnd": "GreenDarkest",
+    "secondaryStart": "OrangeLight",
+    "secondaryEnd": "GreenDark",
+    "primaryAccent": "AzureLightest",
+    "secondaryAccent": "MagentaLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "YellowTealBluePink",
+    "displayName": "Yellow Teal Blue Pink",
+    "primaryStart": "Yellow",
+    "primaryEnd": "TealDarkest",
+    "secondaryStart": "YellowLight",
+    "secondaryEnd": "TealDark",
+    "primaryAccent": "BlueLightest",
+    "secondaryAccent": "PinkLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "LimeCyanVioletRed",
+    "displayName": "Lime Cyan Violet Red",
+    "primaryStart": "Lime",
+    "primaryEnd": "CyanDarkest",
+    "secondaryStart": "LimeLight",
+    "secondaryEnd": "CyanDark",
+    "primaryAccent": "VioletLightest",
+    "secondaryAccent": "RedLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "GreenAzureMagentaOrange",
+    "displayName": "Green Azure Magenta Orange",
+    "primaryStart": "Green",
+    "primaryEnd": "AzureDarkest",
+    "secondaryStart": "GreenLight",
+    "secondaryEnd": "AzureDark",
+    "primaryAccent": "MagentaLightest",
+    "secondaryAccent": "OrangeLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "TealBluePinkYellow",
+    "displayName": "Teal Blue Pink Yellow",
+    "primaryStart": "Teal",
+    "primaryEnd": "BlueDarkest",
+    "secondaryStart": "TealLight",
+    "secondaryEnd": "BlueDark",
+    "primaryAccent": "PinkLightest",
+    "secondaryAccent": "YellowLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "CyanVioletRedLime",
+    "displayName": "Cyan Violet Red Lime",
+    "primaryStart": "Cyan",
+    "primaryEnd": "VioletDarkest",
+    "secondaryStart": "CyanLight",
+    "secondaryEnd": "VioletDark",
+    "primaryAccent": "RedLightest",
+    "secondaryAccent": "LimeLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "AzureMagentaOrangeGreen",
+    "displayName": "Azure Magenta Orange Green",
+    "primaryStart": "Azure",
+    "primaryEnd": "MagentaDarkest",
+    "secondaryStart": "AzureLight",
+    "secondaryEnd": "MagentaDark",
+    "primaryAccent": "OrangeLightest",
+    "secondaryAccent": "GreenLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "BluePinkYellowTeal",
+    "displayName": "Blue Pink Yellow Teal",
+    "primaryStart": "Blue",
+    "primaryEnd": "PinkDarkest",
+    "secondaryStart": "BlueLight",
+    "secondaryEnd": "PinkDark",
+    "primaryAccent": "YellowLightest",
+    "secondaryAccent": "TealLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "VioletRedLimeCyan",
+    "displayName": "Violet Red Lime Cyan",
+    "primaryStart": "Violet",
+    "primaryEnd": "RedDarkest",
+    "secondaryStart": "VioletLight",
+    "secondaryEnd": "RedDark",
+    "primaryAccent": "LimeLightest",
+    "secondaryAccent": "CyanLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "MagentaOrangeGreenAzure",
+    "displayName": "Magenta Orange Green Azure",
+    "primaryStart": "Magenta",
+    "primaryEnd": "OrangeDarkest",
+    "secondaryStart": "MagentaLight",
+    "secondaryEnd": "OrangeDark",
+    "primaryAccent": "GreenLightest",
+    "secondaryAccent": "AzureLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "PinkYellowTealBlue",
+    "displayName": "Pink Yellow Teal Blue",
+    "primaryStart": "Pink",
+    "primaryEnd": "YellowDarkest",
+    "secondaryStart": "PinkLight",
+    "secondaryEnd": "YellowDark",
+    "primaryAccent": "TealLightest",
+    "secondaryAccent": "BlueLightest",
+    "primaryTextColor": "Black"
+  }
+]

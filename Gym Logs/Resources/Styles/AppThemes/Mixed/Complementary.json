@@ -1,0 +1,156 @@
+[
+  {
+    "name": "RedCyan",
+    "displayName": "Red Cyan",
+    "primaryStart": "Red",
+    "primaryEnd": "CyanDarkest",
+    "secondaryStart": "RedLight",
+    "secondaryEnd": "CyanDark",
+    "priamryAccent": "RedLightest",
+    "secondaryAccent": "CyanLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "OrangeAzure",
+    "displayName": "Orange Azure",
+    "primaryStart": "Orange",
+    "primaryEnd": "AzureDarkest",
+    "secondaryStart": "OrangeLight",
+    "secondaryEnd": "AzureDark",
+    "primaryAccent": "AzureLightest",
+    "secondaryAccent": "OrangeLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "YellowBlue",
+    "displayName": "Yellow Blue",
+    "primaryStart": "Yellow",
+    "primaryEnd": "BlueDarkest",
+    "secondaryStart": "YellowLight",
+    "secondaryEnd": "BlueDark",
+    "primaryAccent": "BlueLightest",
+    "secondaryAccent": "YellowLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "LimeViolet",
+    "displayName": "Lime Violet",
+    "primaryStart": "Lime",
+    "primaryEnd": "VioletDarkest",
+    "secondaryStart": "LimeLight",
+    "secondaryEnd": "VioletDark",
+    "primaryAccent": "VioletLightest",
+    "secondaryAccent": "LimeLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "GreenMagenta",
+    "displayName": "Green Magenta",
+    "primaryStart": "Green",
+    "primaryEnd": "MagentaDarkest",
+    "secondaryStart": "GreenLight",
+    "secondaryEnd": "MagentaDark",
+    "primaryAccent": "MagentaLightest",
+    "secondaryAccent": "GreenLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "TealPink",
+    "displayName": "Teal Pink",
+    "primaryStart": "Teal",
+    "primaryEnd": "PinkDarkest",
+    "secondaryStart": "TealLight",
+    "secondaryEnd": "PinkDark",
+    "primaryAccent": "PinkLightest",
+    "secondaryAccent": "TealLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "CyanRed",
+    "displayName": "Cyan Red",
+    "primaryStart": "Cyan",
+    "primaryEnd": "RedDarkest",
+    "secondaryStart": "CyanLight",
+    "secondaryEnd": "RedDark",
+    "primaryAccent": "RedLightest",
+    "secondaryAccent": "CyanLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "AzureOrange",
+    "displayName": "Azure Orange",
+    "primaryStart": "Azure",
+    "primaryEnd": "OrangeDarkest",
+    "secondaryStart": "AzureLight",
+    "secondaryEnd": "OrangeDark",
+    "primaryAccent": "OrangeLightest",
+    "secondaryAccent": "AzureLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "BlueYellow",
+    "displayName": "Blue Yellow",
+    "primaryStart": "Blue",
+    "primaryEnd": "YellowDarkest",
+    "secondaryStart": "BlueLight",
+    "secondaryEnd": "YellowDark",
+    "primaryAaccent": "YellowLightest",
+    "secondaryAccent": "BlueLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "VioletLime",
+    "displayName": "Violet Lime",
+    "primaryStart": "Violet",
+    "primaryEnd": "LimeDarkest",
+    "secondaryStart": "VioletLight",
+    "secondaryEnd": "LimeDark",
+    "primaryAccent": "LimeLightest",
+    "secondaryAccent": "VioletLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "MagentaGreen",
+    "displayName": "Magenta Green",
+    "primaryStart": "Magenta",
+    "primaryEnd": "GreenDarkest",
+    "secondaryStart": "MagentaLight",
+    "secondaryEnd": "GreenDark",
+    "primaryAccent": "GreenLightest",
+    "secondaryAccent": "MagentaLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "PinkTeal",
+    "displayName": "Pink Teal",
+    "primaryStart": "Pink",
+    "primaryEnd": "TealDarkest",
+    "secondaryStart": "PinkLight",
+    "secondaryEnd": "TealDark",
+    "primaryAccent": "TealLightest",
+    "secondaryAccent": "PinkLightest",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "WhiteBlack",
+    "displayName": "White Black",
+    "primaryStart": "WhiteDark",
+    "primaryEnd": "Black",
+    "secondaryStart": "White",
+    "secondaryEnd": "BlackLightest",
+    "primaryAccent": "Gray",
+    "secondaryAccent": "Gray",
+    "primaryTextColor": "Black"
+  },
+  {
+    "name": "BlackWhite",
+    "displayName": "Black White",
+    "primaryStart": "Black",
+    "primaryEnd": "WhiteDark",
+    "secondaryStart": "BlackLightest",
+    "secondaryEnd": "White",
+    "primaryAccent": "Gray",
+    "secondaryAccent": "Gray",
+    "primaryTextColor": "White"
+  }
+]
