@@ -5,60 +5,45 @@
              xmlns:controls="clr-namespace:Gym_Logs.View.Controls"
              x:Class="Gym_Logs.View.Pages.ThemeSelectionView">
 
-    <CollectionView ItemsSource="{Binding ThemeCategories}" SelectionMode="None">
+    <CollectionView ItemsSource="{Binding ThemeCategories}"
+                    SelectionMode="None">
+
         <CollectionView.ItemTemplate>
             <DataTemplate>
+
                 <StackLayout>
+
+                    <!-- ================= CATEGORY HEADER ================= -->
                     <Border HeightRequest="65"
                             Margin="4"
-                            Background="{DynamicResource PrimaryBrush}"
                             Stroke="{DynamicResource PrimaryAccent}"
                             StrokeThickness="1">
 
                         <Border.StrokeShape>
                             <RoundRectangle CornerRadius="6"/>
                         </Border.StrokeShape>
-                        <Grid ColumnDefinitions="*,Auto" VerticalOptions="Center" ColumnSpacing="10">
-                            <Label Grid.Column="0" 
-                                   Text="{Binding Name}"
-                                   TextColor="{DynamicResource PrimaryTextColor}"
-                                   FontAttributes="Bold"
-                                   Margin="15,7,0,0">
-                            <Label.GestureRecognizers>
-                                <TapGestureRecognizer 
-                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ThemeSelectionViewModel}}, Path=ToggleCategoryCommand}" 
-                                CommandParameter="{Binding .}" />
-                            </Label.GestureRecognizers>
-                        </Label>
-                            <Label Grid.Column="1"
-                                   Text="›"
-                                   FontSize="26"
-                                   Margin="0,0,15,7"
-                                   HorizontalOptions="End"
-                                   TextColor="{DynamicResource PrimaryTextColor}" >
-                                <Label.Triggers>
-                                    <DataTrigger TargetType="Label" Binding="{Binding IsExpanded}" Value="True">
-                                        <Setter Property="Rotation" Value="90"/>
-                                    </DataTrigger>
-                                    <DataTrigger TargetType="Label" Binding="{Binding IsExpanded}" Value="False">
-                                        <Setter Property="Rotation" Value="0"/>
-                                    </DataTrigger>
-                                </Label.Triggers>
-                            </Label>
-                        </Grid>
 
                         <Border.Triggers>
-                            <DataTrigger TargetType="Border" Binding="{Binding IsExpanded}" Value="True">
+
+                            <DataTrigger TargetType="Border"
+                                         Binding="{Binding IsExpanded}"
+                                         Value="True">
+
                                 <Setter Property="Background">
                                     <Setter.Value>
                                         <RadialGradientBrush Center="0,0" Radius="1">
                                             <GradientStop Color="{DynamicResource PrimaryStart}" Offset="0"/>
-                                            <GradientStop Color="{DynamicResource PrimaryAccent}" Offset="1"/>
+                                            <GradientStop Color="{DynamicResource SecondaryAccent}" Offset="1"/>
                                         </RadialGradientBrush>
                                     </Setter.Value>
                                 </Setter>
+
                             </DataTrigger>
-                            <DataTrigger TargetType="Border" Binding="{Binding IsExpanded}" Value="False">
+
+                            <DataTrigger TargetType="Border"
+                                         Binding="{Binding IsExpanded}"
+                                         Value="False">
+
                                 <Setter Property="Background">
                                     <Setter.Value>
                                         <RadialGradientBrush Center="0,0" Radius="1">
@@ -67,29 +52,183 @@
                                         </RadialGradientBrush>
                                     </Setter.Value>
                                 </Setter>
+
                             </DataTrigger>
+
                         </Border.Triggers>
 
+                        <Grid ColumnDefinitions="*,Auto"
+                              VerticalOptions="Center"
+                              ColumnSpacing="10">
+
+                            <Label Grid.Column="0"
+                                   Text="{Binding Name}"
+                                   TextColor="{DynamicResource PrimaryTextColor}"
+                                   FontAttributes="Bold"
+                                   Margin="15,7,0,0">
+
+                                <Label.GestureRecognizers>
+                                    <TapGestureRecognizer
+                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ThemeSelectionViewModel}}, Path=ToggleCategoryCommand}"
+                                        CommandParameter="{Binding .}" />
+                                </Label.GestureRecognizers>
+
+                            </Label>
+
+                            <Label Grid.Column="1"
+                                   Text="›"
+                                   FontSize="26"
+                                   Margin="0,0,15,7"
+                                   HorizontalOptions="End"
+                                   TextColor="{DynamicResource PrimaryTextColor}">
+
+                                <Label.Triggers>
+                                    <DataTrigger TargetType="Label"
+                                                 Binding="{Binding IsExpanded}"
+                                                 Value="True">
+                                        <Setter Property="Rotation" Value="90"/>
+                                    </DataTrigger>
+                                </Label.Triggers>
+
+                            </Label>
+
+                        </Grid>
                     </Border>
 
-                    <CollectionView ItemsSource="{Binding Themes}" IsVisible="{Binding IsExpanded}" SelectionMode="None">
-                        <CollectionView.ItemsLayout>
-                            <GridItemsLayout Orientation="Vertical" Span="2" HorizontalItemSpacing="4" VerticalItemSpacing="4"/>
-                        </CollectionView.ItemsLayout>
-                        <CollectionView.ItemTemplate>
-                            <DataTemplate>
-                                <controls:ThemeItemView BindingContext="{Binding .}">
-                                    <controls:ThemeItemView.GestureRecognizers>
-                                        <TapGestureRecognizer
-                                        Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ThemeSelectionViewModel}}, Path=ThemeSelectedCommand}"
-                                        CommandParameter="{Binding .}" />
-                                    </controls:ThemeItemView.GestureRecognizers>
-                                </controls:ThemeItemView>
-                            </DataTemplate>
-                        </CollectionView.ItemTemplate>
-                    </CollectionView>
+                    <!-- ================= GROUP LIST ================= -->
+                    <StackLayout IsVisible="{Binding IsExpanded}"
+                                 Padding="10,0">
+
+                        <CollectionView ItemsSource="{Binding Themes}"
+                                        SelectionMode="None">
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+
+                                    <StackLayout>
+
+                                        <!-- ===== GROUP HEADER ===== -->
+                                        <Border HeightRequest="50"
+                                                Margin="4"
+                                                Stroke="{DynamicResource PrimaryAccent}"
+                                                StrokeThickness="1">
+
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="6"/>
+                                            </Border.StrokeShape>
+
+                                            <Border.Triggers>
+
+                                                <DataTrigger TargetType="Border"
+                                                             Binding="{Binding IsExpanded}"
+                                                             Value="True">
+
+                                                    <Setter Property="Background">
+                                                        <Setter.Value>
+                                                            <RadialGradientBrush Center="0,0" Radius="1">
+                                                                <GradientStop Color="{DynamicResource SecondaryStart}" Offset="0"/>
+                                                                <GradientStop Color="{DynamicResource PrimaryAccent}" Offset="1"/>
+                                                            </RadialGradientBrush>
+                                                        </Setter.Value>
+                                                    </Setter>
+
+                                                </DataTrigger>
+
+                                                <DataTrigger TargetType="Border"
+                                                             Binding="{Binding IsExpanded}"
+                                                             Value="False">
+
+                                                    <Setter Property="Background">
+                                                        <Setter.Value>
+                                                            <RadialGradientBrush Center="0,0" Radius="1">
+                                                                <GradientStop Color="{DynamicResource SecondaryStart}" Offset="0"/>
+                                                                <GradientStop Color="{DynamicResource SecondaryEnd}" Offset="1"/>
+                                                            </RadialGradientBrush>
+                                                        </Setter.Value>
+                                                    </Setter>
+
+                                                </DataTrigger>
+
+                                            </Border.Triggers>
+
+                                            <Grid ColumnDefinitions="*,Auto"
+                                                  VerticalOptions="Center">
+
+                                                <Label Grid.Column="0"
+                                                       Text="{Binding Name}"
+                                                       TextColor="{DynamicResource PrimaryTextColor}"
+                                                       VerticalOptions="Center"
+                                                       Margin="15,0"/>
+
+                                                <Label Grid.Column="1"
+                                                       Text="›"
+                                                       FontSize="26"
+                                                       Margin="0,0,15,7"
+                                                       HorizontalOptions="End"
+                                                       TextColor="{DynamicResource PrimaryTextColor}">
+
+                                                    <Label.Triggers>
+                                                        <DataTrigger TargetType="Label"
+                                                                     Binding="{Binding IsExpanded}"
+                                                                     Value="True">
+                                                            <Setter Property="Rotation" Value="90"/>
+                                                        </DataTrigger>
+                                                    </Label.Triggers>
+
+                                                </Label>
+
+                                            </Grid>
+
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ThemeSelectionViewModel}}, Path=ToggleGroupCommand}"
+                                                    CommandParameter="{Binding .}" />
+                                            </Border.GestureRecognizers>
+
+                                        </Border>
+
+                                        <!-- ===== THEME GRID ===== -->
+                                        <CollectionView ItemsSource="{Binding Themes}"
+                                                        IsVisible="{Binding IsExpanded}"
+                                                        SelectionMode="None">
+
+                                            <CollectionView.ItemsLayout>
+                                                <GridItemsLayout Orientation="Vertical"
+                                                                 Span="2"
+                                                                 HorizontalItemSpacing="4"
+                                                                 VerticalItemSpacing="4"/>
+                                            </CollectionView.ItemsLayout>
+
+                                            <CollectionView.ItemTemplate>
+                                                <DataTemplate>
+
+                                                    <controls:ThemeItemView BindingContext="{Binding .}">
+                                                        <controls:ThemeItemView.GestureRecognizers>
+                                                            <TapGestureRecognizer
+                                                                Command="{Binding Source={RelativeSource AncestorType={x:Type vm:ThemeSelectionViewModel}}, Path=ThemeSelectedCommand}"
+                                                                CommandParameter="{Binding .}" />
+                                                        </controls:ThemeItemView.GestureRecognizers>
+                                                    </controls:ThemeItemView>
+
+                                                </DataTemplate>
+                                            </CollectionView.ItemTemplate>
+
+                                        </CollectionView>
+
+                                    </StackLayout>
+
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+
+                        </CollectionView>
+
+                    </StackLayout>
+
                 </StackLayout>
+
             </DataTemplate>
         </CollectionView.ItemTemplate>
+
     </CollectionView>
+
 </ContentPage>

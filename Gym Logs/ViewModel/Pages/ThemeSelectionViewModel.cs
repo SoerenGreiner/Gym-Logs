@@ -19,11 +19,9 @@ namespace Gym_Logs.ViewModel.Pages
         {
             _themeService = App.ThemeService;
 
-            var categories = ThemeFactory.LoadThemeCategories();
-            foreach (var category in categories)
-            {
+            // Load Categories
+            foreach (var category in ThemeFactory.LoadThemeCategories())
                 ThemeCategories.Add(category);
-            }
 
             SelectedTheme = _themeService.CurrentTheme;
         }
@@ -31,17 +29,46 @@ namespace Gym_Logs.ViewModel.Pages
         [RelayCommand]
         void ThemeSelected(AppThemeModel theme)
         {
+            if (theme == null)
+                return;
+
             _themeService.ApplyTheme(theme);
             SelectedTheme = theme;
+
             Shell.Current.GoToAsync("..");
         }
 
         [RelayCommand]
         void ToggleCategory(ThemeCategoryModel category)
         {
+            if (category == null)
+                return;
+
             category.IsExpanded = !category.IsExpanded;
+
+            foreach (var other in ThemeCategories)
+            {
+                if (other != category)
+                    other.IsExpanded = false;
+            }
+        }
+
+        [RelayCommand]
+        void ToggleGroup(ThemeGroupModel group)
+        {
+            if (group == null)
+                return;
+
+            group.IsExpanded = !group.IsExpanded;
+
+            foreach (var category in ThemeCategories)
+            {
+                foreach (var g in category.Themes)
+                {
+                    if (g != group)
+                        g.IsExpanded = false;
+                }
+            }
         }
     }
 }
-
-

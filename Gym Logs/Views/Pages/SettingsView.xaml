@@ -26,7 +26,7 @@
 
             <!-- ================= THEMES ================= -->
             <VerticalStackLayout Grid.Row="0" Spacing="5">
-                <Border Stroke="{DynamicResource Accent}"
+                <Border Stroke="{DynamicResource PrimaryAccent}"
                         Background="{DynamicResource PrimaryBrush}"
                         StrokeThickness="2"
                         Padding="8"
@@ -43,7 +43,7 @@
                            TextColor="{DynamicResource PrimaryTextColor}" />
                 </Border>
 
-                <Border Stroke="{DynamicResource Accent}"
+                <Border Stroke="{DynamicResource PrimaryAccent}"
                         Background="{DynamicResource SecondaryBrush}"
                         StrokeThickness="2"
                         Padding="5"
@@ -71,7 +71,7 @@
                                 <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource PrimaryEnd}" />
                                 <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource SecondaryStart}" />
                                 <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource SecondaryEnd}" />
-                                <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource Accent}" />
+                                <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource PrimaryAccent}" />
 
                                 </HorizontalStackLayout>
                                 
@@ -81,7 +81,7 @@
                                    Text="›"
                                    FontSize="26"
                                    Margin="0,0,30,0"
-                                   TextColor="{DynamicResource Accent}" />
+                                   TextColor="{DynamicResource PrimaryTextColor}" />
 
                             <Grid.GestureRecognizers>
                                 <TapGestureRecognizer Command="{Binding OpenThemeSelectionCommand}" />
@@ -91,15 +91,15 @@
                         <BoxView HeightRequest="2"
                                  Margin="30,0,30,0"
                                  Opacity="0.3"
-                                 BackgroundColor="{DynamicResource Accent}" />
+                                 BackgroundColor="{DynamicResource PrimaryAccent}" />
 
                         <Grid ColumnDefinitions="*,*,*">
                             <controls:CustomRadioButton Grid.Column="0" 
                                                         Text="Light"
                                                         GroupName="Brightness"
                                                         IsSelected="{Binding IsLightSelected, Mode=TwoWay}"
-                                                        OuterStrokeColor="{DynamicResource Accent}"
-                                                        InnerFillColor="{DynamicResource Accent}"
+                                                        OuterStrokeColor="{DynamicResource PrimaryAccent}"
+                                                        InnerFillColor="{DynamicResource PrimaryAccent}"
                                                         OuterSize="24"
                                                         InnerSize="14"
                                                         OuterStrokeThickness="2"/>
@@ -107,8 +107,8 @@
                                                         Text="Normal"
                                                         GroupName="Brightness"
                                                         IsSelected="{Binding IsNormalSelected, Mode=TwoWay}"
-                                                        OuterStrokeColor="{DynamicResource Accent}"
-                                                        InnerFillColor="{DynamicResource Accent}"
+                                                        OuterStrokeColor="{DynamicResource PrimaryAccent}"
+                                                        InnerFillColor="{DynamicResource PrimaryAccent}"
                                                         OuterSize="24"
                                                         InnerSize="14"
                                                         OuterStrokeThickness="2"/>
@@ -116,8 +116,8 @@
                                                         Text="Dark"
                                                         GroupName="Brightness"
                                                         IsSelected="{Binding IsDarkSelected, Mode=TwoWay}"
-                                                        OuterStrokeColor="{DynamicResource Accent}"
-                                                        InnerFillColor="{DynamicResource Accent}"
+                                                        OuterStrokeColor="{DynamicResource PrimaryAccent}"
+                                                        InnerFillColor="{DynamicResource PrimaryAccent}"
                                                         OuterSize="24"
                                                         InnerSize="14"
                                                         OuterStrokeThickness="2"/>
@@ -126,7 +126,7 @@
                         <BoxView HeightRequest="2"
                                  Margin="30,0,30,0"
                                  Opacity="0.3"
-                                 BackgroundColor="{DynamicResource Accent}" />
+                                 BackgroundColor="{DynamicResource PrimaryAccent}" />
 
                         <Grid ColumnDefinitions="*,*" HorizontalOptions="Fill" VerticalOptions="Center">
                             <Label Grid.Column="0"
@@ -140,38 +140,38 @@
                                                    HorizontalOptions="End"
                                                    Margin="30,0,30,0"
                                                    IsToggled="{Binding IsBrushInverted, Mode=TwoWay}" 
-                                                   TrackOnColor="{DynamicResource Accent}"
-                                                   TrackOffColor="{DynamicResource SecondaryEnd}"
+                                                   TrackOnColor="{DynamicResource PrimaryAccent}"
+                                                   TrackOffColor="{DynamicResource PrimaryEnd}"
                                                    ThumbColor="{DynamicResource SecondaryStart}"
-                                                   TrackStrokeColor="{DynamicResource Accent}"
+                                                   TrackStrokeColor="{DynamicResource PrimaryAccent}"
                                                    TrackStrokeThickness="1"
-                                                   ThumbStrokeColor="{DynamicResource Accent}"
+                                                   ThumbStrokeColor="{DynamicResource PrimaryAccent}"
                                                    ThumbStrokeThickness="0.5"/>
                         </Grid>
 
                         <BoxView HeightRequest="2"
                                  Margin="30,0,30,0"
                                  Opacity="0.3"
-                                 BackgroundColor="{DynamicResource Accent}" />
+                                 BackgroundColor="{DynamicResource PrimaryAccent}" />
 
                         <Grid ColumnDefinitions="*,*" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0,0,0,0">
                             <Label Grid.Column="0"
                                    Text="Invertierter Farbverlauf"
                                    FontAttributes="Bold"
                                    VerticalOptions="Center"
-                                   Margin="30,0,10,0"
+                                   Margin="30,0,10,10"
                                    TextColor="{DynamicResource PrimaryTextColor}" />
 
                             <controls:CustomSwitch Grid.Column="1"
                                                    HorizontalOptions="End"
                                                    Margin="0,0,30,0"
                                                    IsToggled="{Binding AreBrushStartPointsInverted, Mode=TwoWay}" 
-                                                   TrackOnColor="{DynamicResource Accent}"
-                                                   TrackOffColor="{DynamicResource SecondaryEnd}"
+                                                   TrackOnColor="{DynamicResource PrimaryAccent}"
+                                                   TrackOffColor="{DynamicResource PrimaryEnd}"
                                                    ThumbColor="{DynamicResource SecondaryStart}"
-                                                   TrackStrokeColor="{DynamicResource Accent}"
+                                                   TrackStrokeColor="{DynamicResource PrimaryAccent}"
                                                    TrackStrokeThickness="1"
-                                                   ThumbStrokeColor="{DynamicResource Accent}"
+                                                   ThumbStrokeColor="{DynamicResource PrimaryAccent}"
                                                    ThumbStrokeThickness="0.5"/>
                         </Grid>
 

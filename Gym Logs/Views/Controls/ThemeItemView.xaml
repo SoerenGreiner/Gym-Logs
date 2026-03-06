@@ -17,7 +17,7 @@
         </Style>
     </ContentView.Resources>
 
-    <Border Stroke="{Binding AccentColor}" StrokeThickness="1" Padding="8" >
+    <Border Stroke="{DynamicResource PrimaryAccent}" StrokeThickness="1" Padding="8" >
         <Border.Background>
             <RadialGradientBrush Center="0,0" Radius="1">
                 <GradientStop Color="{Binding PrimaryStartColor}" Offset="0"/>
@@ -52,7 +52,7 @@
                     <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{Binding PrimaryEndColor}" />
                     <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{Binding SecondaryStartColor}" />
                     <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{Binding SecondaryEndColor}" />
-                    <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{Binding AccentColor}" />
+                    <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{Binding PrimaryAccentColor}" />
                 </HorizontalStackLayout>
             </VerticalStackLayout>
 

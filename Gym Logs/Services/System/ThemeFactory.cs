@@ -8,34 +8,69 @@ public static class ThemeFactory
     public static IEnumerable<ThemeCategoryModel> LoadThemeCategories()
     {
         var assembly = Assembly.GetExecutingAssembly();
+
         var resourceNames = assembly.GetManifestResourceNames()
-            .Where(n => n.EndsWith(".json") && n.Contains("Resources.Styles.AppThemes"))
+            .Where(n => n.EndsWith(".json") &&
+                        n.Contains("Resources.Styles.AppThemes"))
             .ToList();
 
-        var categories = new List<ThemeCategoryModel>();
+        var categoryMap = new Dictionary<string, ThemeCategoryModel>();
 
         foreach (var resourceName in resourceNames)
         {
             using var stream = assembly.GetManifestResourceStream(resourceName);
-            if (stream == null) continue;
+            if (stream == null)
+                continue;
 
             using var reader = new StreamReader(stream);
             var json = reader.ReadToEnd();
 
             var themes = JsonSerializer.Deserialize<List<AppThemeModel>>(json);
-            if (themes == null || themes.Count == 0) continue;
+            if (themes == null || themes.Count == 0)
+                continue;
 
-            var nameParts = resourceName.Split('.');
-            var categoryName = nameParts[^2];
+            /*
+             Naming Convention:
+             Resources.Styles.AppThemes.Category.Group.File.json
+            */
 
-            categories.Add(new ThemeCategoryModel
+            var parts = resourceName.Split('.');
+
+            if (parts.Length < 3)
+                continue;
+
+            var categoryName = parts[^3];
+            var groupName = parts[^2];
+
+            if (!categoryMap.TryGetValue(categoryName, out var category))
             {
-                Name = categoryName,
-                Themes = new ObservableCollection<AppThemeModel>(themes)
-            });
+                category = new ThemeCategoryModel
+                {
+                    Name = categoryName,
+                    Themes = new ObservableCollection<ThemeGroupModel>()
+                };
+
+                categoryMap[categoryName] = category;
+            }
+
+            var group = category.Themes
+                .FirstOrDefault(g => g.Name == groupName);
+
+            if (group == null)
+            {
+                group = new ThemeGroupModel
+                {
+                    Name = groupName,
+                    Themes = new ObservableCollection<AppThemeModel>()
+                };
+
+                category.Themes.Add(group);
+            }
+
+            foreach (var theme in themes)
+                group.Themes.Add(theme);
         }
 
-        return categories;
+        return categoryMap.Values;
     }
 }
-

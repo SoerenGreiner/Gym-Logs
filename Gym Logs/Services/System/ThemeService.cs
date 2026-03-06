@@ -71,10 +71,16 @@ public class ThemeService : INotifyPropertyChanged
     public ThemeService()
     {
         var categories = ThemeFactory.LoadThemeCategories().ToList();
+
         ThemeCategories = categories;
-        Themes = categories.SelectMany(c => c.Themes).ToList();
+
+        Themes = categories
+            .SelectMany(c => c.Themes)
+            .SelectMany(g => g.Themes)
+            .ToList();
 
         var savedBrightness = Preferences.Default.Get(BrightnessKey, ThemeBrightness.Normal.ToString());
+
         if (Enum.TryParse(savedBrightness, out ThemeBrightness parsed))
             Brightness = parsed;
     }
@@ -153,7 +159,8 @@ public class ThemeService : INotifyPropertyChanged
         r["PrimaryEnd"] = C(primaryEnd);
         r["SecondaryStart"] = C(secondaryStart);
         r["SecondaryEnd"] = C(secondaryEnd);
-        r["Accent"] = C(theme.PrimaryAccent);
+        r["PrimaryAccent"] = C(theme.PrimaryAccent);
+        r["SecondaryAccent"] = C(theme.SecondaryAccent);
 
         r["PrimaryTextColor"] = GetContrastingText(C(primaryStart));
 

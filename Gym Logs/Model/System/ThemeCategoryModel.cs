@@ -7,7 +7,7 @@ namespace Gym_Logs.Model.System
     {
         public string Name { get; set; }
 
-        public ObservableCollection<AppThemeModel> Themes { get; set; } = new();
+        public ObservableCollection<ThemeGroupModel> Themes { get; set; } = new();
 
         [ObservableProperty]
         bool isExpanded;
