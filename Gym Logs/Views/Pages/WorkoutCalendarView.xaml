@@ -45,7 +45,7 @@
                    FontAttributes="Bold"
                    HorizontalOptions="Center"
                    VerticalOptions="Center"
-                   FontSize="22"
+                   FontSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=16}"
                    TextColor="{DynamicResource PrimaryTextColor}"/>
 
             <Button Grid.Column="2"

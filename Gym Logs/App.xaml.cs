@@ -10,6 +10,8 @@ namespace Gym_Logs
         {
             InitializeComponent();
 
+            AdaptiveUIManager.Instance.Initialize();
+
             ThemeService = new ThemeService();
             ThemeService.LoadSavedTheme();
 
