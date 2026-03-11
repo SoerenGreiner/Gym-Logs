@@ -36,7 +36,7 @@ Gym-Logs is a **Sports Tracking App** built with **.NET MAUI** that helps users 
 <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/visualstudio/visualstudio-plain.svg" width="40" title="Visual Studio"/>
 </p>
 
-## Demo
+## Screenshots
 
 ![Calendar](Media/dokument1.PNG)
 ![Flyout](Media/dokument2.PNG)
