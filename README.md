@@ -2,6 +2,8 @@
 
 Gym-Logs is a **Sports Tracking App** built with **.NET MAUI** that helps users log their workouts, track progress, and visualize performance over time.
 
+⚠️ This project is currently under active development.
+
 ## Features
 
 - Track workouts and exercises with sets, reps, and weights
@@ -40,5 +42,3 @@ Gym-Logs is a **Sports Tracking App** built with **.NET MAUI** that helps users 
 ![Flyout](Media/dokument2.PNG)
 ![Settings](Media/dokument3.PNG)
 ![Color theme](Media/dokument4.PNG)
-
-*Currently private project – development in progress.*
