@@ -14,13 +14,13 @@
                 <StackLayout>
 
                     <!-- ================= CATEGORY HEADER ================= -->
-                    <Border HeightRequest="65"
-                            Margin="4"
+                    <Border HeightRequest="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='50'}"
+                            Margin="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='2'}"
                             Stroke="{DynamicResource PrimaryAccent}"
-                            StrokeThickness="1">
+                            StrokeThickness="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='1'}">
 
                         <Border.StrokeShape>
-                            <RoundRectangle CornerRadius="6"/>
+                            <RoundRectangle CornerRadius="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='6'}"/>
                         </Border.StrokeShape>
 
                         <Border.Triggers>
@@ -59,13 +59,14 @@
 
                         <Grid ColumnDefinitions="*,Auto"
                               VerticalOptions="Center"
-                              ColumnSpacing="10">
+                              ColumnSpacing="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='10'}">
 
                             <Label Grid.Column="0"
                                    Text="{Binding Name}"
+                                   FontSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='20'}"
                                    TextColor="{DynamicResource PrimaryTextColor}"
                                    FontAttributes="Bold"
-                                   Margin="15,7,0,0">
+                                   Margin="15,5,0,0">
 
                                 <Label.GestureRecognizers>
                                     <TapGestureRecognizer
@@ -77,8 +78,9 @@
 
                             <Label Grid.Column="1"
                                    Text="›"
-                                   FontSize="26"
-                                   Margin="0,0,15,7"
+                                   FontSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='26'}"
+                                   FontAttributes="Bold"
+                                   Margin="0,0,15,10"
                                    HorizontalOptions="End"
                                    TextColor="{DynamicResource PrimaryTextColor}">
 
@@ -96,8 +98,7 @@
                     </Border>
 
                     <!-- ================= GROUP LIST ================= -->
-                    <StackLayout IsVisible="{Binding IsExpanded}"
-                                 Padding="10,0">
+                    <StackLayout IsVisible="{Binding IsExpanded}">
 
                         <CollectionView ItemsSource="{Binding Themes}"
                                         SelectionMode="None">
@@ -108,13 +109,13 @@
                                     <StackLayout>
 
                                         <!-- ===== GROUP HEADER ===== -->
-                                        <Border HeightRequest="50"
-                                                Margin="4"
+                                        <Border HeightRequest="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='50'}"
+                                                Margin="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='2'}"
                                                 Stroke="{DynamicResource PrimaryAccent}"
-                                                StrokeThickness="1">
+                                                StrokeThickness="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='1'}">
 
                                             <Border.StrokeShape>
-                                                <RoundRectangle CornerRadius="6"/>
+                                                <RoundRectangle CornerRadius="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='6'}"/>
                                             </Border.StrokeShape>
 
                                             <Border.Triggers>
@@ -152,18 +153,22 @@
                                             </Border.Triggers>
 
                                             <Grid ColumnDefinitions="*,Auto"
-                                                  VerticalOptions="Center">
+                                                  VerticalOptions="Center"
+                                                  ColumnSpacing="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='10'}">
 
                                                 <Label Grid.Column="0"
                                                        Text="{Binding Name}"
+                                                       FontSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='13'}"
+                                                       FontAttributes="Bold"
                                                        TextColor="{DynamicResource PrimaryTextColor}"
                                                        VerticalOptions="Center"
-                                                       Margin="15,0"/>
+                                                       Margin="15,0,0,7" />
 
                                                 <Label Grid.Column="1"
                                                        Text="›"
-                                                       FontSize="26"
-                                                       Margin="0,0,15,7"
+                                                       FontSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='26'}"
+                                                       FontAttributes="Bold"
+                                                       Margin="0,0,15,10"
                                                        HorizontalOptions="End"
                                                        TextColor="{DynamicResource PrimaryTextColor}">
 
@@ -194,9 +199,9 @@
 
                                             <CollectionView.ItemsLayout>
                                                 <GridItemsLayout Orientation="Vertical"
-                                                                 Span="2"
-                                                                 HorizontalItemSpacing="4"
-                                                                 VerticalItemSpacing="4"/>
+                                                                 Span="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='2'}"
+                                                                 HorizontalItemSpacing="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='4'}"
+                                                                 VerticalItemSpacing="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='4'}"/>
                                             </CollectionView.ItemsLayout>
 
                                             <CollectionView.ItemTemplate>

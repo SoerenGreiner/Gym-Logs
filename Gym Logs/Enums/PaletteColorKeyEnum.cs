@@ -1,7 +1,10 @@
-﻿
-namespace Gym_Logs.Enums
+﻿namespace Gym_Logs.Enums
 {
-    public enum PaletteColorKey
+    /// <summary>
+    /// Definiert die Schlüssel für Farbwerte im App-Theme.
+    /// Jeder Wert entspricht einer Farbe in der Farbpalette, die über Ressourcen gebunden werden kann.
+    /// </summary>
+    public enum PaletteColorKeyEnum
     {
         // Red Shades
         RedLightest,

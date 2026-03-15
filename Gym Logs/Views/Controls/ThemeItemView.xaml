@@ -3,21 +3,29 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Gym_Logs.View.Controls.ThemeItemView">
 
+    <!-- ===================== RESOURCES ===================== -->
     <ContentView.Resources>
         <Style x:Key="ThemePreviewBox" TargetType="Border">
-            <Setter Property="WidthRequest" Value="22"/>
-            <Setter Property="HeightRequest" Value="22"/>
+            <!-- Width/Height scaled via UIScale -->
+            <Setter Property="WidthRequest" 
+                    Value="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=22}" />
+            <Setter Property="HeightRequest" 
+                    Value="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=22}" />
             <Setter Property="Stroke" Value="Black"/>
-            <Setter Property="StrokeThickness" Value="1"/>
+            <Setter Property="StrokeThickness" 
+                    Value="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=1}" />
             <Setter Property="StrokeShape">
                 <Setter.Value>
-                    <RoundRectangle CornerRadius="4"/>
+                    <RoundRectangle CornerRadius="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=4}" />
                 </Setter.Value>
             </Setter>
         </Style>
     </ContentView.Resources>
 
-    <Border Stroke="{DynamicResource PrimaryAccent}" StrokeThickness="1" Padding="8" >
+    <!-- ===================== MAIN BORDER ===================== -->
+    <Border Stroke="{DynamicResource PrimaryAccent}" 
+            StrokeThickness="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=1}" 
+            Padding="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=8}" >
         <Border.Background>
             <RadialGradientBrush Center="0,0" Radius="1">
                 <GradientStop Color="{Binding PrimaryStartColor}" Offset="0"/>
@@ -25,11 +33,20 @@
             </RadialGradientBrush>
         </Border.Background>
         <Border.StrokeShape>
-            <RoundRectangle CornerRadius="6"/>
+            <RoundRectangle CornerRadius="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=6}"/>
         </Border.StrokeShape>
 
-        <Grid ColumnDefinitions="*,Auto,*" RowDefinitions="*">
-            <Border Grid.Column="0" WidthRequest="40" HeightRequest="40" Margin="2" HorizontalOptions="End">
+        <!-- ===================== GRID LAYOUT ===================== -->
+        <Grid ColumnDefinitions="*,Auto,*" RowDefinitions="*"
+              ColumnSpacing="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=6}"
+              RowSpacing="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=6}">
+
+            <!-- LEFT COLOR BOX -->
+            <Border Grid.Column="0" 
+                    WidthRequest="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=40}" 
+                    HeightRequest="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=40}" 
+                    Margin="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=2}" 
+                    HorizontalOptions="End">
                 <Border.Background>
                     <RadialGradientBrush Center="0,0" Radius="1">
                         <GradientStop Color="{Binding PrimaryStartColor}" Offset="0"/>
@@ -37,17 +54,23 @@
                     </RadialGradientBrush>
                 </Border.Background>
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="6"/>
+                    <RoundRectangle CornerRadius="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=6}"/>
                 </Border.StrokeShape>
             </Border>
 
-            <VerticalStackLayout Grid.Column="1" Spacing="6" HorizontalOptions="Center">
+            <!-- MIDDLE THEME NAME AND PREVIEW -->
+            <VerticalStackLayout Grid.Column="1" 
+                                 Spacing="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=6}" 
+                                 HorizontalOptions="Center">
+
                 <Label Text="{Binding LocalizedDisplayName}" 
                        HorizontalOptions="Center"
                        FontAttributes="Bold"
+                       FontSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=16}"
                        TextColor="{Binding PrimaryTextColorColor}" />
 
-                <HorizontalStackLayout Spacing="4" HorizontalOptions="Center">
+                <HorizontalStackLayout Spacing="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=4}" 
+                                       HorizontalOptions="Center">
                     <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{Binding PrimaryStartColor}" />
                     <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{Binding PrimaryEndColor}" />
                     <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{Binding SecondaryStartColor}" />
@@ -56,7 +79,12 @@
                 </HorizontalStackLayout>
             </VerticalStackLayout>
 
-            <Border Grid.Column="2" WidthRequest="40" HeightRequest="40" Margin="2" HorizontalOptions="Start">
+            <!-- RIGHT COLOR BOX -->
+            <Border Grid.Column="2" 
+                    WidthRequest="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=40}" 
+                    HeightRequest="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=40}" 
+                    Margin="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=2}" 
+                    HorizontalOptions="Start">
                 <Border.Background>
                     <RadialGradientBrush Center="0,0" Radius="1">
                         <GradientStop Color="{Binding SecondaryStartColor}" Offset="0"/>
@@ -64,10 +92,10 @@
                     </RadialGradientBrush>
                 </Border.Background>
                 <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="6"/>
+                    <RoundRectangle CornerRadius="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=6}"/>
                 </Border.StrokeShape>
             </Border>
+
         </Grid>
     </Border>
 </ContentView>
-
