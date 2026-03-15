@@ -26,37 +26,37 @@ namespace Gym_Logs.Model.System
         /// <summary>Start color of the primary gradient.</summary>
         [JsonPropertyName("primaryStart")]
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public PaletteColorKey PrimaryStart { get; set; }
+        public PaletteColorKeyEnum PrimaryStart { get; set; }
 
         /// <summary>End color of the primary gradient.</summary>
         [JsonPropertyName("primaryEnd")]
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public PaletteColorKey PrimaryEnd { get; set; }
+        public PaletteColorKeyEnum PrimaryEnd { get; set; }
 
         /// <summary>Start color of the secondary gradient.</summary>
         [JsonPropertyName("secondaryStart")]
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public PaletteColorKey SecondaryStart { get; set; }
+        public PaletteColorKeyEnum SecondaryStart { get; set; }
 
         /// <summary>End color of the secondary gradient.</summary>
         [JsonPropertyName("secondaryEnd")]
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public PaletteColorKey SecondaryEnd { get; set; }
+        public PaletteColorKeyEnum SecondaryEnd { get; set; }
 
         /// <summary>Primary accent color for highlights and borders.</summary>
         [JsonPropertyName("primaryAccent")]
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public PaletteColorKey PrimaryAccent { get; set; }
+        public PaletteColorKeyEnum PrimaryAccent { get; set; }
 
         /// <summary>Secondary accent color for highlights and borders.</summary>
         [JsonPropertyName("secondaryAccent")]
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public PaletteColorKey SecondaryAccent { get; set; }
+        public PaletteColorKeyEnum SecondaryAccent { get; set; }
 
         /// <summary>Primary text color key used for readable text over backgrounds.</summary>
         [JsonPropertyName("primaryTextColor")]
         [JsonConverter(typeof(JsonStringEnumConverter))]
-        public PaletteColorKey PrimaryTextColor { get; set; }
+        public PaletteColorKeyEnum PrimaryTextColor { get; set; }
 
         // ===== COLOR HELPERS =====
 
@@ -95,7 +95,7 @@ namespace Gym_Logs.Model.System
         /// </summary>
         /// <param name="key">The palette color key to resolve.</param>
         /// <returns>The resolved <see cref="Color"/>.</returns>
-        public Color GetColor(PaletteColorKey key)
+        public Color GetColor(PaletteColorKeyEnum key)
         {
             var resourceKey = key.ToString();
             if (Application.Current?.Resources.TryGetValue(resourceKey, out var obj) == true && obj is Color c)
@@ -110,7 +110,7 @@ namespace Gym_Logs.Model.System
         /// <param name="start">The starting <see cref="PaletteColorKey"/> of the gradient.</param>
         /// <param name="end">The ending <see cref="PaletteColorKey"/> of the gradient.</param>
         /// <returns>A <see cref="RadialGradientBrush"/> with the resolved colors.</returns>
-        public RadialGradientBrush CreateBrush(PaletteColorKey start, PaletteColorKey end)
+        public RadialGradientBrush CreateBrush(PaletteColorKeyEnum start, PaletteColorKeyEnum end)
         {
             return new RadialGradientBrush
             {

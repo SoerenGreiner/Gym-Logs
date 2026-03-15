@@ -84,19 +84,19 @@ namespace Gym_Logs.ViewModel
             IsBrushInverted = Preferences.Default.Get(InvertBrushPrefKey, false);
             AreBrushStartPointsInverted = Preferences.Default.Get(InvertStartPointsPrefKey, false);
 
-            var savedBrightness = Preferences.Default.Get(BrightnessPrefKey, ThemeBrightness.Normal.ToString());
-            if (!Enum.TryParse(savedBrightness, out ThemeBrightness brightness))
-                brightness = ThemeBrightness.Normal;
+            var savedBrightness = Preferences.Default.Get(BrightnessPrefKey, ThemeBrightnessEnum.Normal.ToString());
+            if (!Enum.TryParse(savedBrightness, out ThemeBrightnessEnum brightness))
+                brightness = ThemeBrightnessEnum.Normal;
 
             switch (brightness)
             {
-                case ThemeBrightness.Light:
+                case ThemeBrightnessEnum.Light:
                     IsLightSelected = true;
                     break;
-                case ThemeBrightness.Normal:
+                case ThemeBrightnessEnum.Normal:
                     IsNormalSelected = true;
                     break;
-                case ThemeBrightness.Dark:
+                case ThemeBrightnessEnum.Dark:
                     IsDarkSelected = true;
                     break;
             }
@@ -120,8 +120,8 @@ namespace Gym_Logs.ViewModel
         {
             if (value)
             {
-                _themeService.SetBrightness(ThemeBrightness.Light);
-                Preferences.Default.Set(BrightnessPrefKey, ThemeBrightness.Light.ToString());
+                _themeService.SetBrightness(ThemeBrightnessEnum.Light);
+                Preferences.Default.Set(BrightnessPrefKey, ThemeBrightnessEnum.Light.ToString());
             }
         }
 
@@ -134,8 +134,8 @@ namespace Gym_Logs.ViewModel
         {
             if (value)
             {
-                _themeService.SetBrightness(ThemeBrightness.Normal);
-                Preferences.Default.Set(BrightnessPrefKey, ThemeBrightness.Normal.ToString());
+                _themeService.SetBrightness(ThemeBrightnessEnum.Normal);
+                Preferences.Default.Set(BrightnessPrefKey, ThemeBrightnessEnum.Normal.ToString());
             }
         }
 
@@ -148,8 +148,8 @@ namespace Gym_Logs.ViewModel
         {
             if (value)
             {
-                _themeService.SetBrightness(ThemeBrightness.Dark);
-                Preferences.Default.Set(BrightnessPrefKey, ThemeBrightness.Dark.ToString());
+                _themeService.SetBrightness(ThemeBrightnessEnum.Dark);
+                Preferences.Default.Set(BrightnessPrefKey, ThemeBrightnessEnum.Dark.ToString());
             }
         }
 

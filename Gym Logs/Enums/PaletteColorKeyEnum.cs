@@ -4,7 +4,7 @@
     /// Definiert die Schlüssel für Farbwerte im App-Theme.
     /// Jeder Wert entspricht einer Farbe in der Farbpalette, die über Ressourcen gebunden werden kann.
     /// </summary>
-    public enum PaletteColorKey
+    public enum PaletteColorKeyEnum
     {
         // Red Shades
         RedLightest,

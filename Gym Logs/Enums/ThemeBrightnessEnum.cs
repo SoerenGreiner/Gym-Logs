@@ -4,7 +4,7 @@
     /// Definiert die Helligkeitsstufe eines App-Themes.
     /// Wird verwendet, um Farben je nach gewünschter Helligkeit anzupassen.
     /// </summary>
-    public enum ThemeBrightness
+    public enum ThemeBrightnessEnum
     {
         /// <summary>Helle Variante des Themes, z. B. für hohe Lesbarkeit.</summary>
         Light,

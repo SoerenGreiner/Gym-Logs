@@ -23,12 +23,12 @@ namespace Gym_Logs.Services.System
         /// </summary>
         public IReadOnlyList<ThemeCategoryModel> ThemeCategories { get; }
 
-        private ThemeBrightness _brightness = ThemeBrightness.Normal;
+        private ThemeBrightnessEnum _brightness = ThemeBrightnessEnum.Normal;
 
         /// <summary>
         /// Gets the current brightness level.
         /// </summary>
-        public ThemeBrightness Brightness
+        public ThemeBrightnessEnum Brightness
         {
             get => _brightness;
             private set
@@ -106,9 +106,9 @@ namespace Gym_Logs.Services.System
                 .SelectMany(g => g.Themes)
                 .ToList();
 
-            var savedBrightness = Preferences.Default.Get(BrightnessKey, ThemeBrightness.Normal.ToString());
+            var savedBrightness = Preferences.Default.Get(BrightnessKey, ThemeBrightnessEnum.Normal.ToString());
 
-            if (Enum.TryParse(savedBrightness, out ThemeBrightness parsed))
+            if (Enum.TryParse(savedBrightness, out ThemeBrightnessEnum parsed))
                 Brightness = parsed;
         }
 
@@ -130,7 +130,7 @@ namespace Gym_Logs.Services.System
         /// Reapplies the current theme with the new brightness.
         /// </summary>
         /// <param name="brightness">The desired brightness level.</param>
-        public void SetBrightness(ThemeBrightness brightness)
+        public void SetBrightness(ThemeBrightnessEnum brightness)
         {
             if (Brightness == brightness) return;
 
@@ -159,7 +159,7 @@ namespace Gym_Logs.Services.System
         /// </summary>
         /// <param name="theme">The theme to apply.</param>
         /// <param name="brightness">Optional brightness override.</param>
-        public void ApplyTheme(AppThemeModel theme, ThemeBrightness? brightness = null)
+        public void ApplyTheme(AppThemeModel theme, ThemeBrightnessEnum? brightness = null)
         {
             if (theme == null || Application.Current == null) return;
 
@@ -173,9 +173,9 @@ namespace Gym_Logs.Services.System
             {
                 float factor = Brightness switch
                 {
-                    ThemeBrightness.Light => 1.2f,
-                    ThemeBrightness.Normal => 1f,
-                    ThemeBrightness.Dark => 0.8f,
+                    ThemeBrightnessEnum.Light => 1.2f,
+                    ThemeBrightnessEnum.Normal => 1f,
+                    ThemeBrightnessEnum.Dark => 0.8f,
                     _ => 1f
                 };
 
@@ -188,7 +188,7 @@ namespace Gym_Logs.Services.System
             }
 
             // Helper: Get color from ResourceDictionary and adjust
-            Color C(PaletteColorKey key)
+            Color C(PaletteColorKeyEnum key)
             {
                 if (r.TryGetValue(key.ToString(), out var obj) && obj is Color c)
                     return Adjust(c);
