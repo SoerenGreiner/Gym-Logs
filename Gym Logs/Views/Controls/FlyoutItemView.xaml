@@ -3,46 +3,62 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Gym_Logs.ViewModel"
              x:Class="Gym_Logs.View.Controls.FlyoutItemView"
-             HeightRequest="48"
+             HeightRequest="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='48'}"
              HorizontalOptions="Fill">
+
     <StackLayout>
+
+        <!-- ================= TAP BORDER ================= -->
         <Border x:Name="TapBorder"
-                HeightRequest="45"
+                HeightRequest="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='45'}"
                 HorizontalOptions="Fill"
-                Margin="0"
-                Padding="10,6"
+                Margin="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='0'}"
+                Padding="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='10,6'}"
                 Background="{DynamicResource SecondaryBrush}">
 
             <Border.Triggers>
                 <DataTrigger TargetType="Border"
-                 Binding="{Binding IsPressed}"
-                 Value="True">
+                             Binding="{Binding IsPressed}"
+                             Value="True">
                     <Setter Property="Background"
-                Value="{DynamicResource Accent}" />
+                            Value="{DynamicResource Accent}" />
                 </DataTrigger>
             </Border.Triggers>
 
-            <Grid ColumnDefinitions="Auto,*" VerticalOptions="Center">
-                <Image Source="{Binding Icon}"
-               WidthRequest="22"
-               HeightRequest="22"
-               VerticalOptions="Center"/>
+            <!-- ================= GRID ================= -->
+            <Grid ColumnDefinitions="Auto,*"
+                  VerticalOptions="Center"
+                  ColumnSpacing="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='10'}">
 
+                <!-- Icon -->
+                <Image Source="{Binding Icon}"
+                       WidthRequest="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='22'}"
+                       HeightRequest="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='22'}"
+                       VerticalOptions="Center"/>
+
+                <!-- Label -->
                 <Label Grid.Column="1"
-               Text="{Binding Title}"
-               Margin="10,0,0,0"
-               FontAttributes="Bold"
-               TextColor="{DynamicResource PrimaryTextColor}"
-               VerticalOptions="Center"/>
+                       Text="{Binding Title}"
+                       Margin="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='10,0,0,0'}"
+                       FontAttributes="Bold"
+                       TextColor="{DynamicResource PrimaryTextColor}"
+                       VerticalOptions="Center"/>
+
             </Grid>
 
+            <!-- ================= TAP GESTURE ================= -->
             <Border.GestureRecognizers>
                 <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type vm:AppShellViewModel}}, Path=NavigateCommand}"
                                       CommandParameter="{Binding}" />
             </Border.GestureRecognizers>
+
         </Border>
-        <BoxView HeightRequest="1"
+
+        <!-- Divider -->
+        <BoxView HeightRequest="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='1'}"
                  BackgroundColor="{DynamicResource Accent}"
                  HorizontalOptions="Fill"/>
+
     </StackLayout>
 </ContentView>
+

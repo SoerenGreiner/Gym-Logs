@@ -5,82 +5,88 @@
              xmlns:controls="clr-namespace:Gym_Logs.UI.Controls"
              x:Class="Gym_Logs.View.SettingsView">
 
+    <!-- ===================== RESOURCES ===================== -->
     <ContentPage.Resources>
         <Style x:Key="ThemePreviewBox" TargetType="Border">
-            <Setter Property="WidthRequest" Value="22"/>
-            <Setter Property="HeightRequest" Value="22"/>
+            <!-- Width/Height scaled using UIScale -->
+            <Setter Property="WidthRequest" 
+                    Value="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=22}" />
+            <Setter Property="HeightRequest" 
+                    Value="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=22}" />
             <Setter Property="Stroke" Value="Black"/>
-            <Setter Property="StrokeThickness" Value="1"/>
+            <Setter Property="StrokeThickness" 
+                    Value="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=1}" />
             <Setter Property="StrokeShape">
                 <Setter.Value>
-                    <RoundRectangle CornerRadius="4"/>
+                    <RoundRectangle CornerRadius="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=4}" />
                 </Setter.Value>
             </Setter>
         </Style>
     </ContentPage.Resources>
 
     <ScrollView>
-        <Grid Padding="16"
-              RowSpacing="20"
+        <Grid Padding="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=16}"
+              RowSpacing="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=20}"
               RowDefinitions="Auto,Auto,Auto">
 
             <!-- ================= THEMES ================= -->
-            <VerticalStackLayout Grid.Row="0" Spacing="5">
+            <VerticalStackLayout Grid.Row="0" Spacing="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=5}">
+
+                <!-- Theme Header -->
                 <Border Stroke="{DynamicResource PrimaryAccent}"
                         Background="{DynamicResource PrimaryBrush}"
-                        StrokeThickness="2"
-                        Padding="8"
+                        StrokeThickness="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=2}"
+                        Padding="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=8}"
                         HorizontalOptions="Start"
                         VerticalOptions="Center">
-
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="4"/>
+                        <RoundRectangle CornerRadius="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=4}" />
                     </Border.StrokeShape>
 
                     <Label Text="Themes:"
-                           FontSize="18"
+                           FontSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=18}"
                            FontAttributes="Bold"
                            TextColor="{DynamicResource PrimaryTextColor}" />
                 </Border>
 
+                <!-- Theme Selection Box -->
                 <Border Stroke="{DynamicResource PrimaryAccent}"
                         Background="{DynamicResource SecondaryBrush}"
-                        StrokeThickness="2"
-                        Padding="5"
+                        StrokeThickness="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=2}"
+                        Padding="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=5}"
                         HorizontalOptions="Fill"
                         VerticalOptions="Center">
-
                     <Border.StrokeShape>
-                        <RoundRectangle CornerRadius="4"/>
+                        <RoundRectangle CornerRadius="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=4}" />
                     </Border.StrokeShape>
 
-                    <VerticalStackLayout Spacing="10">
+                    <VerticalStackLayout Spacing="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=10}">
 
-                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="10">
+                        <!-- Current Theme Display -->
+                        <Grid ColumnDefinitions="*,Auto" ColumnSpacing="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=10}">
                             <VerticalStackLayout Grid.Column="0">
-                                
+
                                 <Label Text="{Binding CurrentTheme.DisplayName}"
+                                       FontSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=16}"
                                        FontAttributes="Bold"
                                        TextColor="{DynamicResource PrimaryTextColor}"
                                        HorizontalOptions="Center"/>
-                                
-                                <HorizontalStackLayout Spacing="6"
+
+                                <HorizontalStackLayout Spacing="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=6}"
                                                        HorizontalOptions="Center">
-
-                                <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource PrimaryStart}" />
-                                <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource PrimaryEnd}" />
-                                <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource SecondaryStart}" />
-                                <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource SecondaryEnd}" />
-                                <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource PrimaryAccent}" />
-
+                                    <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource PrimaryStart}" />
+                                    <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource PrimaryEnd}" />
+                                    <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource SecondaryStart}" />
+                                    <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource SecondaryEnd}" />
+                                    <Border Style="{StaticResource ThemePreviewBox}" BackgroundColor="{DynamicResource PrimaryAccent}" />
                                 </HorizontalStackLayout>
-                                
+
                             </VerticalStackLayout>
 
                             <Label Grid.Column="1"
                                    Text="›"
-                                   FontSize="26"
-                                   Margin="0,0,30,0"
+                                   FontSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=26}"
+                                   Margin="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='0,0,30,0'}"
                                    TextColor="{DynamicResource PrimaryTextColor}" />
 
                             <Grid.GestureRecognizers>
@@ -88,109 +94,115 @@
                             </Grid.GestureRecognizers>
                         </Grid>
 
-                        <BoxView HeightRequest="2"
-                                 Margin="30,0,30,0"
+                        <!-- Divider -->
+                        <BoxView HeightRequest="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=2}"
+                                 Margin="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='30,0,30,0'}"
                                  Opacity="0.3"
                                  BackgroundColor="{DynamicResource PrimaryAccent}" />
 
-                        <Grid ColumnDefinitions="*,*,*">
+                        <!-- Brightness Options -->
+                        <Grid ColumnDefinitions="*,*,*" ColumnSpacing="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=10}">
                             <controls:CustomRadioButton Grid.Column="0" 
                                                         Text="Light"
                                                         GroupName="Brightness"
                                                         IsSelected="{Binding IsLightSelected, Mode=TwoWay}"
                                                         OuterStrokeColor="{DynamicResource PrimaryAccent}"
                                                         InnerFillColor="{DynamicResource PrimaryAccent}"
-                                                        OuterSize="24"
-                                                        InnerSize="14"
-                                                        OuterStrokeThickness="2"/>
+                                                        OuterSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=24}"
+                                                        InnerSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=14}"
+                                                        OuterStrokeThickness="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=2}"/>
                             <controls:CustomRadioButton Grid.Column="1" 
                                                         Text="Normal"
                                                         GroupName="Brightness"
                                                         IsSelected="{Binding IsNormalSelected, Mode=TwoWay}"
                                                         OuterStrokeColor="{DynamicResource PrimaryAccent}"
                                                         InnerFillColor="{DynamicResource PrimaryAccent}"
-                                                        OuterSize="24"
-                                                        InnerSize="14"
-                                                        OuterStrokeThickness="2"/>
+                                                        OuterSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=24}"
+                                                        InnerSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=14}"
+                                                        OuterStrokeThickness="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=2}"/>
                             <controls:CustomRadioButton Grid.Column="2" 
                                                         Text="Dark"
                                                         GroupName="Brightness"
                                                         IsSelected="{Binding IsDarkSelected, Mode=TwoWay}"
                                                         OuterStrokeColor="{DynamicResource PrimaryAccent}"
                                                         InnerFillColor="{DynamicResource PrimaryAccent}"
-                                                        OuterSize="24"
-                                                        InnerSize="14"
-                                                        OuterStrokeThickness="2"/>
+                                                        OuterSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=24}"
+                                                        InnerSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=14}"
+                                                        OuterStrokeThickness="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=2}"/>
                         </Grid>
 
-                        <BoxView HeightRequest="2"
-                                 Margin="30,0,30,0"
+                        <!-- Divider -->
+                        <BoxView HeightRequest="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=2}"
+                                 Margin="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='30,0,30,0'}"
                                  Opacity="0.3"
                                  BackgroundColor="{DynamicResource PrimaryAccent}" />
 
+                        <!-- Inverted Colors Switch -->
                         <Grid ColumnDefinitions="*,*" HorizontalOptions="Fill" VerticalOptions="Center">
                             <Label Grid.Column="0"
                                    Text="Invertierter Farben"
-                                   Margin="30,0,30,0"
+                                   Margin="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='30,0,30,0'}"
+                                   FontSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=16}"
                                    FontAttributes="Bold"
                                    VerticalOptions="Center"
                                    TextColor="{DynamicResource PrimaryTextColor}" />
 
                             <controls:CustomSwitch Grid.Column="1"
                                                    HorizontalOptions="End"
-                                                   Margin="30,0,30,0"
+                                                   Margin="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='30,0,30,0'}"
                                                    IsToggled="{Binding IsBrushInverted, Mode=TwoWay}" 
                                                    TrackOnColor="{DynamicResource PrimaryAccent}"
                                                    TrackOffColor="{DynamicResource PrimaryEnd}"
                                                    ThumbColor="{DynamicResource SecondaryStart}"
                                                    TrackStrokeColor="{DynamicResource PrimaryAccent}"
-                                                   TrackStrokeThickness="1"
+                                                   TrackStrokeThickness="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=1}"
                                                    ThumbStrokeColor="{DynamicResource PrimaryAccent}"
-                                                   ThumbStrokeThickness="0.5"/>
+                                                   ThumbStrokeThickness="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=0.5}"/>
                         </Grid>
 
-                        <BoxView HeightRequest="2"
-                                 Margin="30,0,30,0"
+                        <!-- Divider -->
+                        <BoxView HeightRequest="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=2}"
+                                 Margin="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='30,0,30,0'}"
                                  Opacity="0.3"
                                  BackgroundColor="{DynamicResource PrimaryAccent}" />
 
-                        <Grid ColumnDefinitions="*,*" HorizontalOptions="Fill" VerticalOptions="Center" Margin="0,0,0,0">
+                        <!-- Inverted Gradient Switch -->
+                        <Grid ColumnDefinitions="*,*" HorizontalOptions="Fill" VerticalOptions="Center">
                             <Label Grid.Column="0"
                                    Text="Invertierter Farbverlauf"
+                                   FontSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=16}"
                                    FontAttributes="Bold"
                                    VerticalOptions="Center"
-                                   Margin="30,0,10,10"
+                                   Margin="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='30,0,10,10'}"
                                    TextColor="{DynamicResource PrimaryTextColor}" />
 
                             <controls:CustomSwitch Grid.Column="1"
                                                    HorizontalOptions="End"
-                                                   Margin="0,0,30,0"
+                                                   Margin="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='0,0,30,0'}"
                                                    IsToggled="{Binding AreBrushStartPointsInverted, Mode=TwoWay}" 
                                                    TrackOnColor="{DynamicResource PrimaryAccent}"
                                                    TrackOffColor="{DynamicResource PrimaryEnd}"
                                                    ThumbColor="{DynamicResource SecondaryStart}"
                                                    TrackStrokeColor="{DynamicResource PrimaryAccent}"
-                                                   TrackStrokeThickness="1"
+                                                   TrackStrokeThickness="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=1}"
                                                    ThumbStrokeColor="{DynamicResource PrimaryAccent}"
-                                                   ThumbStrokeThickness="0.5"/>
+                                                   ThumbStrokeThickness="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=0.5}"/>
                         </Grid>
 
                     </VerticalStackLayout>
                 </Border>
             </VerticalStackLayout>
 
-            <!-- ================= DIVIDER ================= -->
+            <!-- ================= DIVIDER ROW ================= -->
             <BoxView Grid.Row="1"
-                     HeightRequest="1"
+                     HeightRequest="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=1}"
                      BackgroundColor="{DynamicResource InactiveStart}" />
 
-            <!-- ================= GENERAL (später) ================= -->
+            <!-- ================= GENERAL (placeholder for later) ================= -->
             <VerticalStackLayout Grid.Row="2">
-                <!-- hier kommen später Sprache, Schriftart usw -->
+                <!-- später: Sprache, Schriftart usw -->
             </VerticalStackLayout>
 
         </Grid>
     </ScrollView>
 </ContentPage>
-
-
