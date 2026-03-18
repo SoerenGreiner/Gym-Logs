@@ -1,11 +1,11 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
-using Gym_Logs.ViewModel;
+using Gym_Logs.ViewModels.Pages;
 using Gym_Logs.Model.System;
 using System.Threading.Tasks;
 using Microsoft.Maui.Controls;
 
-namespace Gym_Logs.ViewModel
+namespace Gym_Logs.ViewModels
 {
     /// <summary>
     /// ViewModel für ein einzelnes Flyout-Item in der AppShell.

@@ -1,6 +1,6 @@
-using Gym_Logs.ViewModel;
+using Gym_Logs.ViewModels.Pages;
 
-namespace Gym_Logs.View;
+namespace Gym_Logs.Views.Pages;
 public partial class PersonalView : ContentPage
 {
 	public PersonalView(PersonalViewModel viewModel)

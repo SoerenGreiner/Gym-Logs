@@ -1,13 +1,13 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Gym_Logs.Model.System;
-using Gym_Logs.View.Pages;
+using Gym_Logs.Views.Pages;
 using Gym_Logs.Services.System;
 using Gym_Logs.Enums;
 using Microsoft.Maui.Storage;
 using System;
 
-namespace Gym_Logs.ViewModel
+namespace Gym_Logs.ViewModels.Pages
 {
     /// <summary>
     /// ViewModel for the Settings page.

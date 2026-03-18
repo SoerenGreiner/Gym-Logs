@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentView
+    x:Class="Gym_Logs.Views.Controls.CalendarBottomSheetView"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    x:Name="This"
+    IsVisible="False">
+
+    <!-- Semi-transparent overlay background -->
+    <Grid BackgroundColor="{DynamicResource OverlayBackground}">
+
+        <!-- Tapping the overlay closes the bottom sheet -->
+        <Grid.GestureRecognizers>
+            <TapGestureRecognizer Command="{Binding CloseBottomSheetCommand}" />
+        </Grid.GestureRecognizers>
+
+        <!-- Bottom sheet container aligned to the bottom -->
+        <Grid x:Name="BottomSheet"
+              VerticalOptions="End"
+              HeightRequest="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=400}">
+
+            <StackLayout>
+
+                <!-- Dynamic header section -->
+                <Border Padding="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=8}"
+                        Background="{DynamicResource PrimaryBrush}"
+                        Stroke="{DynamicResource PrimaryAccent}"
+                        StrokeThickness="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=2}"
+                        StrokeShape="RoundRectangle 15">
+
+                    <Label Text="{Binding Source={x:Reference This}, Path=HeaderText}"
+                           TextColor="{DynamicResource PrimaryTextColor}"
+                           FontSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=20}"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           Margin="0,0,0,5"/>
+                </Border>
+
+                <!-- CollectionView scrolls only when needed -->
+                <CollectionView ItemsSource="{Binding BottomSheetOptions}"
+                                VerticalOptions="Start"
+                                Margin="10,0,10,0">
+                    <CollectionView.ItemsLayout>
+                        <LinearItemsLayout Orientation="Vertical" 
+                                           ItemSpacing="2"/>
+                    </CollectionView.ItemsLayout>
+
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <Border Padding="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=8}"
+                                    Background="{DynamicResource SecondaryBrush}"
+                                    Stroke="{DynamicResource SecondaryAccent}"
+                                    StrokeThickness="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=2}"
+                                    StrokeShape="RoundRectangle 15">
+
+                                <!-- Grid with 2 columns: image + text on the left, icon on the right -->
+                                <Grid ColumnDefinitions="3*,Auto" 
+                                      VerticalOptions="Center">
+
+                                    <!-- Column 0: image and text -->
+                                    <Grid Grid.Column="0"
+                                          ColumnDefinitions="Auto,*">
+
+                                        <Image Grid.Column="0"
+                                               Source="{Binding ImagePath}"
+                                               WidthRequest="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=32}"
+                                               HeightRequest="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=32}"
+                                               VerticalOptions="Center"/>
+
+                                        <Label Grid.Column="1"
+                                               Text="{Binding Text}"
+                                               FontAttributes="Bold"
+                                               FontSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=20}"
+                                               TextColor="{DynamicResource PrimaryTextColor}"
+                                               HorizontalOptions="End"
+                                               VerticalOptions="Center"
+                                               Margin="0,0,10,0"/>
+                                    </Grid>
+
+                                    <!-- Column 1: icon -->
+                                    <Label Grid.Column="1"
+                                           Text="{Binding Icon}"
+                                           FontSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=24}"
+                                           HorizontalOptions="Center"
+                                           VerticalOptions="Center"/>
+                                </Grid>
+
+                                <!-- Tap gesture for the entire option -->
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Command}" />
+                                </Border.GestureRecognizers>
+
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </StackLayout>
+        </Grid>
+    </Grid>
+</ContentView>

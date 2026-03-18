@@ -1,11 +1,11 @@
 ﻿using Gym_Logs.Model.System;
-using Gym_Logs.View;
+using Gym_Logs.Views.Pages;
 using Gym_Logs.Enums;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using System.Collections.ObjectModel;
 
-namespace Gym_Logs.ViewModel
+namespace Gym_Logs.ViewModels.Pages
 {
     /// <summary>
     /// ViewModel for the AppShell.  

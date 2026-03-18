@@ -1,10 +1,8 @@
 ﻿using Gym_Logs.Services.Database;
-using Gym_Logs.View;
-using Gym_Logs.View.Pages;
-using Gym_Logs.ViewModel;
+using Gym_Logs.Views.Controls;
+using Gym_Logs.Views.Pages;
 using Gym_Logs.Services.System;
-using Gym_Logs.ViewModel.Pages;
-using Gym_Logs.ViewModels;
+using Gym_Logs.ViewModels.Pages;
 using Microsoft.Extensions.Logging;
 using SQLite;
 

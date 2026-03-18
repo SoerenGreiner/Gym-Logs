@@ -110,6 +110,9 @@
 	  <MauiXaml Update="UI\Controls\CustomSwitch.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="UI\Controls\CalendarBottomSheetView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\Controls\CalendarDayView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

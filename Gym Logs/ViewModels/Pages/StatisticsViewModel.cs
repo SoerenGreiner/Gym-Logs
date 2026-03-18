@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Gym_Logs.ViewModel
+namespace Gym_Logs.ViewModels.Pages
 {
     public class StatisticsViewModel
     {

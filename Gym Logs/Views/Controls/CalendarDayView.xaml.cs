@@ -1,4 +1,4 @@
-namespace Gym_Logs.View.Controls;
+namespace Gym_Logs.Views.Controls;
 
 public partial class CalendarDayView : ContentView
 {

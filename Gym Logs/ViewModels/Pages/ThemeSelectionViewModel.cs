@@ -4,7 +4,7 @@ using Gym_Logs.Model.System;
 using Gym_Logs.Services.System;
 using System.Collections.ObjectModel;
 
-namespace Gym_Logs.ViewModel.Pages
+namespace Gym_Logs.ViewModels.Pages
 {
     /// <summary>
     /// ViewModel for the Theme Selection page.

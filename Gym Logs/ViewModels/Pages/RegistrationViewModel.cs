@@ -1,10 +1,10 @@
 ﻿using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 using Gym_Logs.Model.Database;
-using Gym_Logs.View;
+using Gym_Logs.Views.Pages;
 using Gym_Logs.Services.Database;
 
-namespace Gym_Logs.ViewModels
+namespace Gym_Logs.ViewModels.Pages
 {
     public partial class RegistrationViewModel : ObservableObject
     {

@@ -1,7 +1,7 @@
-using Gym_Logs.ViewModel;
+using Gym_Logs.ViewModels.Pages;
 using System;
 
-namespace Gym_Logs.View;
+namespace Gym_Logs.Views.Pages;
 
 public partial class WorkoutCalendarView : ContentPage
 {

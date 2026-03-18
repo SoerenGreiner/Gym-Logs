@@ -1,6 +1,6 @@
-using Gym_Logs.ViewModel.Pages;
+using Gym_Logs.ViewModels.Pages;
 
-namespace Gym_Logs.View.Pages;
+namespace Gym_Logs.Views.Pages;
 
 public partial class ThemeSelectionView : ContentPage
 {

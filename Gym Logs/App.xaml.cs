@@ -1,4 +1,5 @@
 ﻿using Gym_Logs.Services.System;
+using Gym_Logs.Views.Pages;
 
 namespace Gym_Logs
 {

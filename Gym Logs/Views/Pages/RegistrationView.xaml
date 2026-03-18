@@ -2,7 +2,7 @@
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:Gym_Logs.ViewModels"
-             x:Class="Gym_Logs.View.RegistrationView"
+             x:Class="Gym_Logs.Views.Pages.RegistrationView"
              BackgroundColor="{DynamicResource AppBackgroundColor}">
     
     <StackLayout Padding="20" VerticalOptions="Center">

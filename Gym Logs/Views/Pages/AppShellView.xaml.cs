@@ -1,8 +1,6 @@
-﻿using Gym_Logs.View.Pages;
-using Gym_Logs.ViewModel;
-using Gym_Logs.Model.System;
+﻿using Gym_Logs.ViewModels.Pages;
 
-namespace Gym_Logs
+namespace Gym_Logs.Views.Pages
 {
     public partial class AppShellView : Shell
     {

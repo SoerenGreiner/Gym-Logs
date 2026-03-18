@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:Gym_Logs.ViewModel"
+             xmlns:vm="clr-namespace:Gym_Logs.ViewModels"
              xmlns:controls="clr-namespace:Gym_Logs.UI.Controls"
-             x:Class="Gym_Logs.View.SettingsView">
+             x:Class="Gym_Logs.Views.Pages.SettingsView">
 
     <!-- ===================== RESOURCES ===================== -->
     <ContentPage.Resources>

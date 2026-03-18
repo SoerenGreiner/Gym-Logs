@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<Shell x:Class="Gym_Logs.AppShellView"
+<Shell x:Class="Gym_Logs.Views.Pages.AppShellView"
        xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
        xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       xmlns:views="clr-namespace:Gym_Logs.View"
-       xmlns:vm="clr-namespace:Gym_Logs.ViewModel"
+       xmlns:views="clr-namespace:Gym_Logs.Views.Pages"
+       xmlns:vm="clr-namespace:Gym_Logs.ViewModels.Pages"
        xmlns:controls="clr-namespace:Gym_Logs.View.Controls"
        Title="Gym Logs"
        Background="{DynamicResource PrimaryBrush}"

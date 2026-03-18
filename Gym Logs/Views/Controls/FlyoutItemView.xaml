@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentView xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:Gym_Logs.ViewModel"
+             xmlns:vm="clr-namespace:Gym_Logs.ViewModels.Pages"
              x:Class="Gym_Logs.View.Controls.FlyoutItemView"
              HeightRequest="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter='48'}"
              HorizontalOptions="Fill">

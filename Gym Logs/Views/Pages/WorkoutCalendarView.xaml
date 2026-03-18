@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:vm="clr-namespace:Gym_Logs.ViewModel"
-             xmlns:controls="clr-namespace:Gym_Logs.View.Controls"
-             x:Class="Gym_Logs.View.WorkoutCalendarView"
+             xmlns:vm="clr-namespace:Gym_Logs.ViewModels.Pages"
+             xmlns:controls="clr-namespace:Gym_Logs.Views.Controls"
+             x:Class="Gym_Logs.Views.Pages.WorkoutCalendarView"
              BackgroundColor="{DynamicResource Background}">
 
     <!-- MVVM BindingContext -->
@@ -11,73 +11,85 @@
         <vm:WorkoutCalendarViewModel />
     </ContentPage.BindingContext>
 
-    <VerticalStackLayout Padding="10" Spacing="10">
+    <Grid x:Name="MainGrid">
+        <!-- Alles andere liegt in diesem Grid -->
 
-        <!-- Monat Navigation mit Gradient -->
-        <Grid ColumnDefinitions="Auto,*,Auto" HeightRequest="60" VerticalOptions="Center">
-            <Border Grid.ColumnSpan="3"
-                    Stroke="{DynamicResource Accent}"
-                    StrokeShape="RoundRectangle 12"
-                    Padding="0"
-                    HorizontalOptions="Fill"
-                    VerticalOptions="Fill">
-                <Border.Background>
-                    <RadialGradientBrush Center="0,0" Radius="1">
-                        <GradientStop Color="{DynamicResource PrimaryStart}" Offset="0.0" />
-                        <GradientStop Color="{DynamicResource PrimaryEnd}" Offset="1.0" />
-                    </RadialGradientBrush>
-                </Border.Background>
-            </Border>
+        <VerticalStackLayout Padding="10" Spacing="10">
 
-            <Button Text="‹"
-                    FontAttributes="Bold"
-                    Command="{Binding PreviousMonthCommand}"
-                    BackgroundColor="Transparent"
-                    FontSize="36"
-                    TextColor="{DynamicResource PrimaryTextColor}"
-                    WidthRequest="50"
-                    HeightRequest="50"
-                    HorizontalOptions="Start"
-                    VerticalOptions="Center"/>
-
-            <Label Grid.Column="1"
-                   Text="{Binding CurrentMonthName}"
-                   FontAttributes="Bold"
-                   HorizontalOptions="Center"
-                   VerticalOptions="Center"
-                   FontSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=16}"
-                   TextColor="{DynamicResource PrimaryTextColor}"/>
-
-            <Button Grid.Column="2"
-                    Text="›"
-                    FontAttributes="Bold"
-                    Command="{Binding NextMonthCommand}"
-                    BackgroundColor="Transparent"
-                    FontSize="36"
-                    TextColor="{DynamicResource PrimaryTextColor}"
-                    WidthRequest="50"
-                    HeightRequest="50"
-                    HorizontalOptions="End"
-                    VerticalOptions="Center"/>
-        </Grid>
-
-        <CollectionView ItemsSource="{Binding Days}"
-                        SelectionMode="None">
-
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Orientation="Vertical" Span="7"
-                                 HorizontalItemSpacing="6" VerticalItemSpacing="6"/>
-            </CollectionView.ItemsLayout>
-
-            <CollectionView.ItemTemplate>
-                <DataTemplate>
-                    <controls:CalendarDayView
+            <!-- Monat Navigation mit Gradient -->
+            <Grid ColumnDefinitions="Auto,*,Auto" HeightRequest="60" VerticalOptions="Center">
+                <Border Grid.ColumnSpan="3"
+                        Stroke="{DynamicResource Accent}"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="0"
                         HorizontalOptions="Fill"
                         VerticalOptions="Fill">
-                    </controls:CalendarDayView>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
+                    <Border.Background>
+                        <RadialGradientBrush Center="0,0" Radius="1">
+                            <GradientStop Color="{DynamicResource PrimaryStart}" Offset="0.0" />
+                            <GradientStop Color="{DynamicResource PrimaryEnd}" Offset="1.0" />
+                        </RadialGradientBrush>
+                    </Border.Background>
+                </Border>
 
-    </VerticalStackLayout>
+                <Button Text="‹"
+                        FontAttributes="Bold"
+                        Command="{Binding PreviousMonthCommand}"
+                        BackgroundColor="Transparent"
+                        FontSize="36"
+                        TextColor="{DynamicResource PrimaryTextColor}"
+                        WidthRequest="50"
+                        HeightRequest="50"
+                        HorizontalOptions="Start"
+                        VerticalOptions="Center"/>
+
+                <Label Grid.Column="1"
+                       Text="{Binding CurrentMonthName}"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       VerticalOptions="Center"
+                       FontSize="{Binding Source={StaticResource UIScale}, Converter={StaticResource ScaleConverter}, ConverterParameter=16}"
+                       TextColor="{DynamicResource PrimaryTextColor}"/>
+
+                <Button Grid.Column="2"
+                        Text="›"
+                        FontAttributes="Bold"
+                        Command="{Binding NextMonthCommand}"
+                        BackgroundColor="Transparent"
+                        FontSize="36"
+                        TextColor="{DynamicResource PrimaryTextColor}"
+                        WidthRequest="50"
+                        HeightRequest="50"
+                        HorizontalOptions="End"
+                        VerticalOptions="Center"/>
+            </Grid>
+
+            <!-- Kalender-Tage -->
+            <CollectionView ItemsSource="{Binding Days}"
+                            SelectionMode="None">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" Span="7"
+                                     HorizontalItemSpacing="6" VerticalItemSpacing="6"/>
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <controls:CalendarDayView
+                            HorizontalOptions="Fill"
+                            VerticalOptions="Fill"
+                            BindingContext="{Binding .}" />
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+
+        <!-- Bottom Sheet -->
+        <controls:CalendarBottomSheetView x:Name="BottomSheetOverlay"
+                                          BindingContext="{Binding .}"
+                                          HeaderText="Training auswählen"
+                                          IsVisible="{Binding IsBottomSheetVisible}" />
+
+    </Grid>
 </ContentPage>

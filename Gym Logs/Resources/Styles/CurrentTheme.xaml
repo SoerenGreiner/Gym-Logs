@@ -16,5 +16,6 @@
     <Color x:Key="SecondaryAccent">#475467</Color>
 
     <Color x:Key="PrimaryTextColor">#101828</Color>
+    <Color x:Key="OverlayBackground">#80000000</Color>
 
 </ResourceDictionary>
