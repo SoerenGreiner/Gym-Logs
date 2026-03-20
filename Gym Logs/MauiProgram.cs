@@ -46,7 +46,11 @@ namespace Gym_Logs
             builder.Services.AddTransient<ThemeSelectionViewModel>();
             builder.Services.AddTransient<StatisticView>();
             builder.Services.AddTransient<StatisticsViewModel>();
+            builder.Services.AddTransient<WorkoutView>();
+            builder.Services.AddTransient<WorkoutViewModel>();
+
             builder.Services.AddSingleton<ThemeService>();
+            builder.Services.AddSingleton<WorkoutSessionService>();
 #if DEBUG
 
 #if DEBUG

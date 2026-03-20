@@ -110,7 +110,10 @@
 	  <MauiXaml Update="UI\Controls\CustomSwitch.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="UI\Controls\CalendarBottomSheetView.xaml">
+	  <MauiXaml Update="UI\Controls\CustomBottomSheetView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="UI\Controls\CustomTabBarView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\Controls\CalendarDayView.xaml">
@@ -140,6 +143,15 @@
 	  <MauiXaml Update="Views\Pages\WorkoutCalendarView.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
+	  <MauiXaml Update="Views\ContentViews\WorkoutCreateView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\ContentViews\WorkoutLibraryView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\Pages\WorkoutView.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	</ItemGroup>
 
 	<ItemGroup>
@@ -156,6 +168,9 @@
 	  </Compile>
 	  <Compile Update="Resources\Styles\CurrentTheme.xaml.cs">
 	    <DependentUpon>CurrentTheme.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="UI\Controls\CustomBottomSheetView.xaml.cs">
+	    <DependentUpon>CustomBottomSheetView.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\Pages\AppShellView.xaml.cs">
 	    <DependentUpon>AppShellView.xaml</DependentUpon>

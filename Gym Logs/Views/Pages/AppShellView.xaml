@@ -24,34 +24,29 @@
         </CollectionView>
     </Shell.FlyoutContent>
 
-    <ShellContent
-        Route="RegistrationView"
-        Shell.FlyoutBehavior="Disabled"
-        FlyoutItemIsVisible="False"
-        ContentTemplate="{DataTemplate views:RegistrationView}" />
+    <ShellContent Route="RegistrationView"
+                  Shell.FlyoutBehavior="Disabled"
+                  FlyoutItemIsVisible="False"
+                  ContentTemplate="{DataTemplate views:RegistrationView}" />
 
-    <ShellContent
-        Route="WorkoutCalendarView"
-        Shell.FlyoutBehavior="Disabled"
-        FlyoutItemIsVisible="False"
-        ContentTemplate="{DataTemplate views:WorkoutCalendarView}" />
+    <ShellContent Route="WorkoutCalendarView"
+                  Shell.FlyoutBehavior="Disabled"
+                  FlyoutItemIsVisible="False"
+                  ContentTemplate="{DataTemplate views:WorkoutCalendarView}" />
 
-    <ShellContent
-        Route="PersonalView"
-        Shell.FlyoutBehavior="Disabled"
-        FlyoutItemIsVisible="False"
-        ContentTemplate="{DataTemplate views:PersonalView}" />
+    <ShellContent Route="PersonalView"
+                  Shell.FlyoutBehavior="Disabled"
+                  FlyoutItemIsVisible="False"
+                  ContentTemplate="{DataTemplate views:PersonalView}" />
 
-    <ShellContent
-        Route="StatisticView"
-        Shell.FlyoutBehavior="Disabled"
-        FlyoutItemIsVisible="False"
-        ContentTemplate="{DataTemplate views:StatisticView}" />
+    <ShellContent Route="StatisticView"
+                  Shell.FlyoutBehavior="Disabled"
+                  FlyoutItemIsVisible="False"
+                  ContentTemplate="{DataTemplate views:StatisticView}" />
 
-    <ShellContent
-        Route="SettingsView"
-        Shell.FlyoutBehavior="Disabled"
-        FlyoutItemIsVisible="False"
-        ContentTemplate="{DataTemplate views:SettingsView}" />
+    <ShellContent Route="SettingsView"
+                  Shell.FlyoutBehavior="Disabled"
+                  FlyoutItemIsVisible="False"
+                  ContentTemplate="{DataTemplate views:SettingsView}" />
 
 </Shell>

@@ -2,7 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using Gym_Logs.Model.System;
 using Gym_Logs.Enums;
-using Gym_Logs.Views.Controls;
+using Gym_Logs.Views.Pages;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 
@@ -173,23 +173,23 @@ namespace Gym_Logs.ViewModels.Pages
             switch (action)
             {
                 case CalendarActionEnum.AddWorkout:
-                    //await Shell.Current.GoToAsync("WorkoutCreatePage");
+                    await Shell.Current.GoToAsync(nameof(WorkoutView));
                     break;
 
                 case CalendarActionEnum.EditWorkout:
-                    //await Shell.Current.GoToAsync("WorkoutEditPage");
+                    await Shell.Current.GoToAsync($"///{nameof(WorkoutView)}");
                     break;
 
                 case CalendarActionEnum.AddBody:
-                    //await Shell.Current.GoToAsync("BodyCreatePage");
+                    await Shell.Current.GoToAsync($"///{nameof(WorkoutView)}");
                     break;
 
                 case CalendarActionEnum.EditBody:
-                    //await Shell.Current.GoToAsync("BodyEditPage");
+                    await Shell.Current.GoToAsync($"///{nameof(WorkoutView)}");
                     break;
 
                 case CalendarActionEnum.PlanWorkout:
-                    //await Shell.Current.GoToAsync("WorkoutPlanPage");
+                    await Shell.Current.GoToAsync($"///{nameof(WorkoutView)}");
                     break;
 
                 default:
