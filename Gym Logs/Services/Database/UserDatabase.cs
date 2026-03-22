@@ -1,6 +1,4 @@
 ﻿using SQLite;
-using System.Linq;
-using System.Threading.Tasks;
 using Gym_Logs.Model.Database;
 
 namespace Gym_Logs.Services.Database

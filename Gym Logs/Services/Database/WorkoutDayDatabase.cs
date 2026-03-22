@@ -1,9 +1,4 @@
 ﻿using SQLite;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Gym_Logs.Model.Database;
 
 namespace Gym_Logs.Services.Database
@@ -12,14 +7,36 @@ namespace Gym_Logs.Services.Database
     {
         public WorkoutDayDatabase(SQLiteAsyncConnection db) : base(db) { }
 
-        public Task<WorkoutDay?> GetByDateAsync(DateTime date)
-            => _db.Table<WorkoutDay>()
-                  .Where(d => d.Date == date.Date)
-                  .FirstOrDefaultAsync();
+        /// <summary>
+        /// Returns a WorkoutDay for a specific date and user.
+        /// Uses a safe date range instead of direct equality to avoid SQLite issues.
+        /// </summary>
+        public Task<WorkoutDay?> GetByDateAsync(int userId, DateTime date)
+        {
+            var start = date.Date;
+            var end = start.AddDays(1);
 
-        public Task<List<WorkoutDay>> GetByMonthAsync(int year, int month)
-            => _db.Table<WorkoutDay>()
-                  .Where(d => d.Date.Year == year && d.Date.Month == month)
-                  .ToListAsync();
+            return _db.Table<WorkoutDay>()
+                .Where(d => d.UserId == userId &&
+                            d.Date >= start &&
+                            d.Date < end)
+                .FirstOrDefaultAsync();
+        }
+
+        /// <summary>
+        /// Returns all WorkoutDays for a specific month and user.
+        /// Uses a date range instead of Year/Month (SQLite limitation).
+        /// </summary>
+        public Task<List<WorkoutDay>> GetByMonthAsync(int userId, int year, int month)
+        {
+            var startDate = new DateTime(year, month, 1);
+            var endDate = startDate.AddMonths(1);
+
+            return _db.Table<WorkoutDay>()
+                .Where(d => d.UserId == userId &&
+                            d.Date >= startDate &&
+                            d.Date < endDate)
+                .ToListAsync();
+        }
     }
 }

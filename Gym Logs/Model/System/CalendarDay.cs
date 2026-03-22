@@ -19,6 +19,9 @@ namespace Gym_Logs.Model.System
         /// </summary>
         public string DayName { get; set; }
 
+        public bool HasWorkout { get; set; }
+        public bool IsCompleted { get; set; }
+
         private CalendarDayStateEnum _state;
 
         /// <summary>

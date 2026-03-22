@@ -11,22 +11,32 @@ namespace Gym_Logs.ViewModels.Pages
         private readonly UserDatabase _userDb;
 
         [ObservableProperty]
-        string email = "";
+        private string email = "";
 
         [ObservableProperty]
-        string password = "";
+        private string password = "";
 
-        public RegistrationViewModel(UserDatabase userDb)
+        public RegistrationViewModel()
         {
-            _userDb = userDb;
+            // Nutzt jetzt die globale DB-Connection
+            _userDb = App.UserDb;
         }
 
         [RelayCommand]
         public async Task Registrate()
         {
+            if (string.IsNullOrWhiteSpace(Email) || string.IsNullOrWhiteSpace(Password))
+            {
+                await App.Current.MainPage.DisplayAlert("Fehler", "Bitte Email und Passwort eingeben", "OK");
+                return;
+            }
+
             var existingUser = await _userDb.GetByEmailAsync(Email);
             if (existingUser != null)
-                return; // TODO: Message an UI
+            {
+                await App.Current.MainPage.DisplayAlert("Fehler", "Dieser Nutzer existiert bereits", "OK");
+                return;
+            }
 
             var salt = SecurityHelper.GenerateSalt();
             var hash = SecurityHelper.HashPassword(Password, salt);
@@ -39,7 +49,10 @@ namespace Gym_Logs.ViewModels.Pages
             };
 
             await _userDb.SaveAsync(user);
-            await Shell.Current.GoToAsync(nameof(WorkoutCalendarView));
+
+            await SecureStorage.SetAsync("CurrentUserId", user.ID.ToString());
+
+            await Shell.Current.GoToAsync($"//{nameof(WorkoutCalendarView)}");
         }
     }
 }

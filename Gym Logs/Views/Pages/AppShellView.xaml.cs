@@ -10,6 +10,7 @@ namespace Gym_Logs.Views.Pages
             BindingContext = viewModel;
             Routing.RegisterRoute(nameof(ThemeSelectionView), typeof(ThemeSelectionView));
             Routing.RegisterRoute(nameof(WorkoutView), typeof(WorkoutView));
+            Routing.RegisterRoute(nameof(ExercisePickerView), typeof(ExercisePickerView));
         }
 
 

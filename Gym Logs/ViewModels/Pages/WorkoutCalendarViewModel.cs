@@ -3,6 +3,8 @@ using CommunityToolkit.Mvvm.Input;
 using Gym_Logs.Model.System;
 using Gym_Logs.Enums;
 using Gym_Logs.Views.Pages;
+using Gym_Logs.Services.Database;
+using Gym_Logs.Model.Database;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
 
@@ -10,93 +12,160 @@ namespace Gym_Logs.ViewModels.Pages
 {
     /// <summary>
     /// ViewModel for the Workout Calendar page.
-    /// Manages the displayed month, calendar days, and user interactions with the calendar.
+    /// 
+    /// Responsibilities:
+    /// - Display a monthly calendar view
+    /// - Load workout data from the database for the current user
+    /// - Map database entries to UI-friendly calendar days
+    /// - Handle user interaction (day selection, navigation)
+    /// - Provide actions via BottomSheet (Create, Edit, Plan)
+    /// 
+    /// Architecture Notes:
+    /// - Uses SQLite via WorkoutDayDatabase
+    /// - Uses SecureStorage to retrieve the current user
+    /// - Keeps UI (CalendarDay) and DB model (WorkoutDay) separated
     /// </summary>
     public partial class WorkoutCalendarViewModel : ObservableObject
     {
         /// <summary>
+        /// Database access for WorkoutDay entities.
+        /// </summary>
+        private readonly WorkoutDayDatabase _workoutDayDb;
+
+        /// <summary>
+        /// Currently logged-in user's ID (loaded from SecureStorage).
+        /// </summary>
+        private int _currentUserId;
+
+        /// <summary>
         /// The month currently displayed in the calendar.
+        /// Always normalized to the first day of the month.
         /// </summary>
         [ObservableProperty]
         private DateTime displayedMonth = new(DateTime.Now.Year, DateTime.Now.Month, 1);
 
         /// <summary>
-        /// The name of the current month, formatted for display (e.g., "March 2026").
+        /// Formatted name of the current month (e.g., "March 2026").
         /// </summary>
         [ObservableProperty]
         private string currentMonthName;
 
         /// <summary>
-        /// Indicates whether the bottom sheet with available actions is visible.
+        /// Controls visibility of the BottomSheet overlay.
         /// </summary>
         [ObservableProperty]
         private bool isBottomSheetVisible = false;
 
         /// <summary>
-        /// Collection of options displayed inside the bottom sheet.
-        /// Each option represents an action the user can perform for a selected day.
+        /// Collection of actions shown in the BottomSheet.
+        /// Each entry represents a possible action for a selected day.
         /// </summary>
         [ObservableProperty]
-        private ObservableCollection<BottomSheetOptionModel> bottomSheetOptions = new ObservableCollection<BottomSheetOptionModel>();
+        private ObservableCollection<BottomSheetOptionModel> bottomSheetOptions = new();
 
         /// <summary>
-        /// Collection of calendar day entries displayed in the UI.
-        /// Includes headers, inactive days, today, and normal days.
+        /// Collection of all calendar entries (including header + days).
+        /// Bound to the UI CollectionView.
         /// </summary>
         public ObservableCollection<CalendarDay> Days { get; private set; } = new();
 
         /// <summary>
-        /// Weekday names used for the calendar header (Monday-first).
+        /// Weekday labels (Monday-first).
         /// </summary>
         private readonly string[] WeekDays = { "Mo", "Di", "Mi", "Do", "Fr", "Sa", "So" };
 
         /// <summary>
-        /// Initializes a new instance of <see cref="WorkoutCalendarViewModel"/>
-        /// and builds the initial calendar for the current month.
+        /// Constructor initializes database and loads initial data.
         /// </summary>
         public WorkoutCalendarViewModel()
         {
-            BuildCalendar();
+            _workoutDayDb = App.WorkoutDayDb;
+
+            Init();
+        }
+
+        /// <summary>
+        /// Initializes the ViewModel by loading the current user ID
+        /// and fetching calendar data.
+        /// </summary>
+        private async void Init()
+        {
+            try
+            {
+                var userIdStr = await SecureStorage.GetAsync("CurrentUserId");
+
+                if (string.IsNullOrWhiteSpace(userIdStr))
+                {
+                    Debug.WriteLine("❌ Kein User gefunden");
+                    return;
+                }
+
+                _currentUserId = int.Parse(userIdStr);
+
+                await LoadData();
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"❌ Init Fehler: {ex.Message}");
+            }
         }
 
         // ================= Commands =================
 
         /// <summary>
-        /// Moves the calendar to the next month and rebuilds the calendar.
+        /// Navigates to the next month and reloads calendar data.
         /// </summary>
         [RelayCommand]
-        void NextMonth()
+        async Task NextMonth()
         {
             DisplayedMonth = DisplayedMonth.AddMonths(1);
-            BuildCalendar();
+            await LoadData();
         }
 
         /// <summary>
-        /// Moves the calendar to the previous month and rebuilds the calendar.
+        /// Navigates to the previous month and reloads calendar data.
         /// </summary>
         [RelayCommand]
-        void PreviousMonth()
+        async Task PreviousMonth()
         {
             DisplayedMonth = DisplayedMonth.AddMonths(-1);
-            BuildCalendar();
+            await LoadData();
         }
 
         /// <summary>
-        /// Handles the selection of a calendar day.
-        /// Creates and displays a list of available actions for the selected day.
+        /// Handles user tapping on a calendar day.
+        /// Ensures a WorkoutDay exists and opens action menu.
         /// </summary>
-        /// <param name="day">The day that was tapped by the user.</param>
+        /// <param name="day">The selected calendar day.</param>
         [RelayCommand]
-        void SelectDay(CalendarDay day)
+        async Task SelectDay(CalendarDay day)
         {
             if (!day.IsEnabled) return;
 
-            bool hasWorkout = false;
-            bool hasBody = false;
+            // Ensure a WorkoutDay exists in DB
+            var existing = await _workoutDayDb.GetByDateAsync(_currentUserId, day.Date);
+
+            if (existing == null)
+            {
+                existing = new WorkoutDay
+                {
+                    UserId = _currentUserId,
+                    Date = day.Date,
+                    HasStrength = false,
+                    HasCardio = false,
+                    IsCompleted = false
+                };
+
+                await _workoutDayDb.SaveAsync(existing);
+            }
+
+            // Determine state for UI logic
+            bool hasWorkout = existing.HasStrength || existing.HasCardio;
             bool isToday = day.Date.Date == DateTime.Today;
 
             BottomSheetOptions.Clear();
 
+            // Create Workout
             BottomSheetOptions.Add(new BottomSheetOptionModel
             {
                 Text = "Workout erstellen",
@@ -104,9 +173,10 @@ namespace Gym_Logs.ViewModels.Pages
                 Icon = "💪",
                 ImagePath = "workout.png",
                 IsVisible = true,
-                Command = new Command(() => ExecuteAction(CalendarActionEnum.AddWorkout))
+                Command = new Command(() => ExecuteAction(CalendarActionEnum.AddWorkout, day.Date))
             });
 
+            // Edit Workout (only if exists)
             BottomSheetOptions.Add(new BottomSheetOptionModel
             {
                 Text = "Workout bearbeiten",
@@ -114,29 +184,10 @@ namespace Gym_Logs.ViewModels.Pages
                 Icon = "✏",
                 ImagePath = "edit_workout.png",
                 IsVisible = hasWorkout,
-                Command = new Command(() => ExecuteAction(CalendarActionEnum.EditWorkout))
+                Command = new Command(() => ExecuteAction(CalendarActionEnum.EditWorkout, day.Date))
             });
 
-            BottomSheetOptions.Add(new BottomSheetOptionModel
-            {
-                Text = "Body erstellen",
-                Action = CalendarActionEnum.AddBody,
-                Icon = "📊",
-                ImagePath = "body.png",
-                IsVisible = true,
-                Command = new Command(() => ExecuteAction(CalendarActionEnum.AddBody))
-            });
-
-            BottomSheetOptions.Add(new BottomSheetOptionModel
-            {
-                Text = "Body bearbeiten",
-                Action = CalendarActionEnum.EditBody,
-                Icon = "✏",
-                ImagePath = "edit_body.png",
-                IsVisible = hasBody,
-                Command = new Command(() => ExecuteAction(CalendarActionEnum.EditBody))
-            });
-
+            // Plan Workout (only for future days)
             BottomSheetOptions.Add(new BottomSheetOptionModel
             {
                 Text = "Workout vorplanen",
@@ -144,17 +195,15 @@ namespace Gym_Logs.ViewModels.Pages
                 Icon = "📅",
                 ImagePath = "calendar.png",
                 IsVisible = !isToday,
-                Command = new Command(() => ExecuteAction(CalendarActionEnum.PlanWorkout))
+                Command = new Command(() => ExecuteAction(CalendarActionEnum.PlanWorkout, day.Date))
             });
 
             if (BottomSheetOptions.Count > 0)
-            {
                 IsBottomSheetVisible = true;
-            }
         }
 
         /// <summary>
-        /// Closes the bottom sheet and hides all available actions.
+        /// Closes the BottomSheet.
         /// </summary>
         [RelayCommand]
         private void CloseBottomSheet()
@@ -163,56 +212,49 @@ namespace Gym_Logs.ViewModels.Pages
         }
 
         /// <summary>
-        /// Executes the selected calendar action and navigates to the corresponding page.
+        /// Executes the selected calendar action and navigates to the WorkoutView.
+        /// Passes date and action mode via query parameters.
         /// </summary>
-        /// <param name="action">The action selected by the user.</param>
-        private async void ExecuteAction(CalendarActionEnum action)
+        private async void ExecuteAction(CalendarActionEnum action, DateTime date)
         {
             IsBottomSheetVisible = false;
 
-            switch (action)
-            {
-                case CalendarActionEnum.AddWorkout:
-                    await Shell.Current.GoToAsync(nameof(WorkoutView));
-                    break;
+            string route = $"{nameof(WorkoutView)}?date={date:yyyy-MM-dd}&mode={action}";
+            await Shell.Current.GoToAsync(route);
+        }
 
-                case CalendarActionEnum.EditWorkout:
-                    await Shell.Current.GoToAsync($"///{nameof(WorkoutView)}");
-                    break;
+        // ================= Data Handling =================
 
-                case CalendarActionEnum.AddBody:
-                    await Shell.Current.GoToAsync($"///{nameof(WorkoutView)}");
-                    break;
+        /// <summary>
+        /// Loads workout data for the currently displayed month from the database
+        /// and rebuilds the calendar UI.
+        /// </summary>
+        private async Task LoadData()
+        {
+            var dbDays = await _workoutDayDb.GetByMonthAsync(
+                _currentUserId,
+                DisplayedMonth.Year,
+                DisplayedMonth.Month
+            );
 
-                case CalendarActionEnum.EditBody:
-                    await Shell.Current.GoToAsync($"///{nameof(WorkoutView)}");
-                    break;
-
-                case CalendarActionEnum.PlanWorkout:
-                    await Shell.Current.GoToAsync($"///{nameof(WorkoutView)}");
-                    break;
-
-                default:
-                    Debug.WriteLine("Keine passende Action gefunden!");
-                    break;
-            }
+            BuildCalendar(dbDays);
         }
 
         // ================= Calendar Construction =================
 
         /// <summary>
-        /// Builds the calendar days collection for the currently displayed month.
-        /// Includes a header row with weekdays and 6 weeks of calendar cells (42 total).
-        /// Marks inactive days, today, and normal days.
+        /// Builds the calendar grid (7 columns × 6 rows + header).
+        /// Maps database entries to UI elements.
         /// </summary>
-        private void BuildCalendar()
+        /// <param name="dbDays">WorkoutDay entries for the current month.</param>
+        private void BuildCalendar(List<WorkoutDay> dbDays)
         {
             var tempList = new List<CalendarDay>();
 
-            // Set the month label
+            // Set month label
             CurrentMonthName = DisplayedMonth.ToString("MMMM yyyy");
 
-            // Header row for weekdays
+            // Header row (weekdays)
             for (int col = 0; col < 7; col++)
             {
                 tempList.Add(new CalendarDay
@@ -222,24 +264,31 @@ namespace Gym_Logs.ViewModels.Pages
                 });
             }
 
-            // Calendar days (6 weeks × 7 days = 42 cells)
+            // Calculate first visible date in grid
             var firstOfMonth = new DateTime(DisplayedMonth.Year, DisplayedMonth.Month, 1);
-            int offset = ((int)firstOfMonth.DayOfWeek + 6) % 7; // Monday = 0
+            int offset = ((int)firstOfMonth.DayOfWeek + 6) % 7;
             var startDate = firstOfMonth.AddDays(-offset);
 
+            // Fill 6 weeks (42 days)
             for (int i = 0; i < 42; i++)
             {
                 var date = startDate.AddDays(i);
 
+                var workoutDay = dbDays.FirstOrDefault(d => d.Date.Date == date.Date);
+
                 CalendarDayStateEnum state =
-                    date.Month < DisplayedMonth.Month || date.Month > DisplayedMonth.Month ? CalendarDayStateEnum.Inactive :
+                    date.Month != DisplayedMonth.Month ? CalendarDayStateEnum.Inactive :
                     date.Date == DateTime.Today ? CalendarDayStateEnum.Today :
                     CalendarDayStateEnum.Normal;
 
                 tempList.Add(new CalendarDay
                 {
                     Date = date,
-                    State = state
+                    State = state,
+
+                    // UI flags derived from DB
+                    HasWorkout = workoutDay != null,
+                    IsCompleted = workoutDay?.IsCompleted ?? false
                 });
             }
 

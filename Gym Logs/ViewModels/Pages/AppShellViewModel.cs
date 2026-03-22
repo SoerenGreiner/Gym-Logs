@@ -61,19 +61,9 @@ namespace Gym_Logs.ViewModels.Pages
         /// <returns>A task representing the asynchronous operation.</returns>
         public async Task CheckRegistrationStatusAsync()
         {
-            bool isRegistered = false;
+            var userIdStr = await SecureStorage.GetAsync("CurrentUserId");
 
-            try
-            {
-                var value = await SecureStorage.GetAsync("IsRegistered");
-                isRegistered = value == "true";
-            }
-            catch
-            {
-                isRegistered = false;
-            }
-
-            if (!isRegistered)
+            if (string.IsNullOrWhiteSpace(userIdStr))
             {
                 await Shell.Current.GoToAsync($"//{FlyoutRouteEnum.RegistrationView}");
             }
